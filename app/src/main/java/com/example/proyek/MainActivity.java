@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
     private FirebaseAuth mAuth;
     private Button signIn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,25 +46,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email = editTextEmail.getText().toString();
-                String password= editTextPassword.getText().toString();
+                String password = editTextPassword.getText().toString();
 
-                if (email.isEmpty()){
+                if (email.isEmpty()) {
                     editTextEmail.setError("email is required");
                     editTextEmail.requestFocus();
 
                     return;
                 }
-                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     editTextEmail.setError("please provide valid email");
                     return;
                 }
 
-                if (password.isEmpty()){
+                if (password.isEmpty()) {
                     editTextPassword.setError("Password is required");
                     editTextPassword.requestFocus();
                     return;
                 }
-                if (password.length() < 6){
+                if (password.length() < 6) {
                     editTextPassword.setError("password must be 6 character");
                     editTextPassword.requestFocus();
                     return;
@@ -72,12 +73,12 @@ public class MainActivity extends AppCompatActivity {
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
 
                             Intent a = new Intent(MainActivity.this, Home.class);
                             a.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(a);
-                        }else {
+                        } else {
                             Toast.makeText(MainActivity.this, "failed to login", Toast.LENGTH_LONG).show();
                         }
                     }
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null){
+        if (user != null) {
             startActivity(new Intent(MainActivity.this, Home.class));
             finish();
         }
