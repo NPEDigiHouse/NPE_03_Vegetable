@@ -4,16 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:background="@color/white"
-    tools:targetApi="lollipop">
+    android:layout_marginBottom="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clPreviewProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
+        android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -22,7 +19,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
-            android:backgroundTint="@color/secondaryGrey"
+            android:background="@color/secondaryGrey"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +38,7 @@
 
         <TextView
             android:id="@+id/tvTitleHistory"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
@@ -51,22 +48,24 @@
             android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cvPosterHistory"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Sayuran Salad" />
 
         <TextView
             android:id="@+id/tvSubTitleHistory"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginLeft="14dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:ellipsize="end"
             android:fontFamily="@font/nunito_sans"
             android:maxLines="1"
             android:textColor="@color/primaryGrey"
             android:textSize="12sp"
             app:drawableStartCompat="@drawable/ic_outline_place_24"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cvPosterHistory"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleHistory"
             tools:text="Central Fruit Makassar" />
@@ -113,8 +112,7 @@
         android:id="@+id/clPreviewPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="16dp"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view1">
 
@@ -155,8 +153,7 @@
         android:id="@+id/clBtnContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="16dp"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2">
 
@@ -173,14 +170,14 @@
             android:textAllCaps="false"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/containedButton"
+            app:layout_constraintEnd_toStartOf="@+id/btnOrderAgain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:rippleColor="@color/lightPrimaryColor"
             app:strokeColor="@color/primaryColor" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/containedButton"
+            android:id="@+id/btnOrderAgain"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -197,5 +194,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="@color/dividerColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clBtnContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

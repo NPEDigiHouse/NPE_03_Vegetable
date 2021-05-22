@@ -13,7 +13,7 @@ import com.example.proyek.fragments.FragmentInbox;
 import com.example.proyek.fragments.FragmentProfile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Home extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

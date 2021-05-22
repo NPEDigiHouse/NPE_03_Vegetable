@@ -13,9 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyek"
         tools:ignore="AllowBackup">
-
+        <activity android:name=".ForgotPasswordActivity"></activity>
         <activity
             android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Proyek.TransparentStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,35 +24,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".GetStartedActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Proyek.TransparentStatusBar" />
-
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Proyek.TransparentStatusBar"
             android:windowSoftInputMode="adjustPan" />
-
         <activity
-            android:name=".Register"
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Proyek.TransparentStatusBar"
             android:windowSoftInputMode="adjustPan" />
-
-        <activity android:name=".admin.AdminActivity" />
-
-        <activity android:name=".AfterClickMenu" />
-
-        <activity android:name=".Detail" />
-
-        <activity android:name=".Home" />
-
-        <activity android:name=".Profile" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".admin.AdminActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AfterClickMenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfileActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>

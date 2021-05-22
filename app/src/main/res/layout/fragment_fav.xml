@@ -10,7 +10,6 @@
         android:id="@+id/tbFavorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
         android:background="@color/white"
         android:elevation="4dp"
         android:padding="16dp"
@@ -27,7 +26,6 @@
         android:id="@+id/fabCart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         app:backgroundTint="@color/white"
         app:hideMotionSpec="@anim/slide_out_bottom"
@@ -39,12 +37,23 @@
         app:tint="@color/primaryGrey"
         tools:ignore="ContentDescription,VectorDrawableCompat" />
 
-    <!-- Saat favorit kosong -->
+    <!-- Saat favorite tidak kosong -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFavorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbFavorite"
+        tools:listitem="@layout/item_list_favorite" />
+
+    <!-- Saat favorite kosong -->
+    <!-- Ganti visibility menjadi 'visible' kalau mau lihat -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clEmptyFavorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,15 +98,5 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Saat favorite tidak kosong -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFavorite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbFavorite"
-        tools:listitem="@layout/item_list_favorite" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

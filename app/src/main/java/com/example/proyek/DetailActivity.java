@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Detail extends AppCompatActivity implements View.OnClickListener {
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView photo, btnTambah, btnKurang;
     TextView tvName, tvHarga;

@@ -4,16 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dividerColor"
     tools:context=".fragments.FragmentHistory">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
         android:background="@color/white"
-        android:elevation="4dp"
+        android:elevation="8dp"
         android:padding="16dp"
         android:theme="@style/Theme.Proyek"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +26,6 @@
         android:id="@+id/fabCart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         app:backgroundTint="@color/white"
         app:hideMotionSpec="@anim/slide_out_bottom"
@@ -51,11 +48,11 @@
         tools:listitem="@layout/item_list_history" />
 
     <!-- Saat riwayat pesanan kosong -->
+    <!-- Ganti visibility menjadi 'visible' kalau mau lihat -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clEmptyHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

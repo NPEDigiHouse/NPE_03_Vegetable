@@ -1,239 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dividerColor"
-    tools:context=".Register">
+    tools:context=".RegisterActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_splash_screen_bg_icon_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:id="@+id/constraintLayout"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/ellipse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:cropToPadding="false"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_splash_screen_bg_icon_black"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/ellipse"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:src="@drawable/ic_launcher_foreground"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_sign_up"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/nunito_sans_semibold"
-            android:text="@string/buat_akun_baru_anda"
-            android:textColor="@color/primaryGrey"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tfUsername"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:hint="@string/username"
-            app:errorEnabled="false"
-            app:errorIconDrawable="@null"
-            app:helperTextTextColor="@color/design_default_color_error"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/custom_person_icon"
-                android:drawableLeft="@drawable/custom_person_icon"
-                android:drawablePadding="8dp"
-                android:fontFamily="@font/nunito_sans_semibold"
-                android:inputType="text"
-                android:textColor="@color/primaryGrey" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tfEmail"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="12dp"
-            android:hint="@string/email"
-            app:errorEnabled="false"
-            app:errorIconDrawable="@null"
-            app:helperTextTextColor="@color/design_default_color_error"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tfUsername">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/custom_email_icon"
-                android:drawableLeft="@drawable/custom_email_icon"
-                android:drawablePadding="8dp"
-                android:fontFamily="@font/nunito_sans_semibold"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/primaryGrey" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tfPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="12dp"
-            android:hint="@string/password"
-            app:endIconMode="password_toggle"
-            app:errorEnabled="false"
-            app:errorIconDrawable="@null"
-            app:helperTextTextColor="@color/design_default_color_error"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tfEmail">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/custom_lock_icon"
-                android:drawableLeft="@drawable/custom_lock_icon"
-                android:drawablePadding="8dp"
-                android:fontFamily="@font/nunito_sans_semibold"
-                android:inputType="textPassword"
-                android:textColor="@color/primaryGrey" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tfPhone"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="12dp"
-            android:hint="@string/phone_number"
-            app:errorEnabled="false"
-            app:errorIconDrawable="@null"
-            app:helperTextTextColor="@color/design_default_color_error"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tfPassword">
-
-            <com.santalu.maskara.widget.MaskEditText
-                android:id="@+id/etPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/custom_phone_icon"
-                android:drawableLeft="@drawable/custom_phone_icon"
-                android:drawablePadding="8dp"
-                android:fontFamily="@font/nunito_sans_semibold"
-                android:inputType="number"
-                android:maxLength="20"
-                android:textColor="@color/black"
-                app:mask="+62 (___) ___ __ ___" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSignUp"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/nunito_sans_bold"
-            android:padding="8dp"
-            android:text="@string/buat_akun"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:backgroundTint="@color/secondaryColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tfPhone" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnSignUp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_sans_semibold"
-                android:text="@string/sudah_punya_akun"
-                android:textColor="@color/primaryGrey"
-                android:textSize="16sp" />
-
-            <Space
-                android:layout_width="4dp"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tvSignUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_sans_bold"
-                android:text="@string/masuk_sekarang"
-                android:textColor="@color/primaryColor"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_sign_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito_sans_semibold"
+        android:text="@string/buat_akun_baru_anda"
+        android:textColor="@color/primaryGrey"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfUsername"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/username"
+        app:errorEnabled="false"
+        app:errorIconDrawable="@null"
+        app:helperTextTextColor="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/custom_person_icon"
+            android:drawableLeft="@drawable/custom_person_icon"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:inputType="text"
+            android:textColor="@color/primaryGrey" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/email"
+        app:errorEnabled="false"
+        app:errorIconDrawable="@null"
+        app:helperTextTextColor="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tfUsername">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/custom_email_icon"
+            android:drawableLeft="@drawable/custom_email_icon"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/primaryGrey" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/password"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="false"
+        app:errorIconDrawable="@null"
+        app:helperTextTextColor="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tfEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/custom_lock_icon"
+            android:drawableLeft="@drawable/custom_lock_icon"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:inputType="textPassword"
+            android:textColor="@color/primaryGrey" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfPhone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/phone_number"
+        app:errorEnabled="false"
+        app:errorIconDrawable="@null"
+        app:helperTextTextColor="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tfPassword">
+
+        <com.santalu.maskara.widget.MaskEditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/custom_phone_icon"
+            android:drawableLeft="@drawable/custom_phone_icon"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:inputType="number"
+            android:maxLength="20"
+            android:textColor="@color/black"
+            app:mask="+62 (___) ___ __ ___" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignUp"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:padding="12dp"
+        android:text="@string/buat_akun"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:backgroundTint="@color/secondaryColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tfPhone" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSignUp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:text="@string/sudah_punya_akun"
+            android:textColor="@color/primaryGrey"
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:text="@string/masuk_sekarang"
+            android:textColor="@color/primaryColor"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

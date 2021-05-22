@@ -12,7 +12,7 @@
     <string name="masuk_dengan_akun_google">Masuk dengan akun Google</string>
     <string name="buat_akun_baru_anda">Buat Akun Baru Anda</string>
     <string name="username">Username</string>
-    <string name="email">Email</string>
+    <string name="email">Email Address</string>
     <string name="buat_akun">Buat Akun</string>
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="masuk_sekarang">Masuk Sekarang</string>
@@ -32,4 +32,8 @@
     <string name="jangan_lupa_untuk">Jangan lupa untuk selalu mengecek update terbaru kami ya.</string>
     <string name="lihat_detail">Lihat Detail</string>
     <string name="pesan_lagi">Pesan Lagi</string>
+    <string name="lupa_password">Forgot Password?</string>
+    <string name="dot">•</string>
+    <string name="lupa_password_jangan">Enter the email address you used when you joined and we’ll send you instructions to reset your password.</string>
+    <string name="send_reset_instructions">Send Reset Instructions</string>
 </resources>

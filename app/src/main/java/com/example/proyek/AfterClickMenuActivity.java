@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.proyek.adapter.RecyclerAdapter;
 import com.example.proyek.adapter.RvAdapterUser;
 import com.example.proyek.settergetter.RvItemSetGet;
 import com.example.proyek.settergetter.Sayur;
@@ -18,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class AfterClickMenu extends AppCompatActivity {
+public class AfterClickMenuActivity extends AppCompatActivity {
 
     private TextView tvJudul;
     private RecyclerView rvSayur;
@@ -50,7 +49,7 @@ public class AfterClickMenu extends AppCompatActivity {
     }
 
     private void showRecyclerView() {
-        rvSayur.setLayoutManager(new LinearLayoutManager(AfterClickMenu.this));
+        rvSayur.setLayoutManager(new LinearLayoutManager(AfterClickMenuActivity.this));
         if (Judul.equals("Sayur")){
 //            list.addAll(VegetableData.getListData());
 //            ListAdapterVegetable listAdapterVegetable = new ListAdapterVegetable(list);
