@@ -43,7 +43,7 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".activities.ForgotPasswordActivity"
+            android:name=".auth.ForgotPasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Proyek.TransparentStatusBar"
             android:windowSoftInputMode="adjustPan" />

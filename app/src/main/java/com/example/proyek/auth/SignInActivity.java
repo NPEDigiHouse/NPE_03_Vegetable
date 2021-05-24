@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyek.R;
-import com.example.proyek.User;
+import com.example.proyek.user.UserModel;
 import com.example.proyek.activities.GetStartedActivity;
 import com.example.proyek.activities.HomeActivity;
 import com.example.proyek.admin.AdminActivity;
@@ -214,16 +214,12 @@ public class SignInActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser mUser = mAuth.getCurrentUser();
-//                            GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(SignInActivity.this);
-//                            String username = googleSignInAccount.getDisplayName().toString();
-//                            String email = googleSignInAccount.getEmail().toString();
-//                            String phone = "";
                             String role = "user";
 
                             String username = mUser.getDisplayName();
                             String email = mUser.getEmail();
                             String phone = mUser.getPhoneNumber();
-                            User user = new User(username, email, phone, role);
+                            UserModel user = new UserModel(username, email, phone, role);
 
                             FirebaseDatabase.getInstance().getReference("Login").child(FirebaseAuth.getInstance().getCurrentUser()
                                     .getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
