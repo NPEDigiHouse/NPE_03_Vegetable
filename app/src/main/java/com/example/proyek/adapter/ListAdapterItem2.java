@@ -57,8 +57,8 @@ public class ListAdapterItem2 extends RecyclerView.Adapter<ListAdapterItem2.List
         TextView tvName;
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgPhoto = itemView.findViewById(R.id.photo);
-            tvName = itemView.findViewById(R.id.tvJudul);
+            imgPhoto = itemView.findViewById(R.id.ivProductImg);
+            tvName = itemView.findViewById(R.id.tvProductTitle);
         }
     }
 

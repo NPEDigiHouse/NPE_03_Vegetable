@@ -46,6 +46,7 @@ public class AdminActivity extends AppCompatActivity {
         recyclerView.setAdapter(recyclerAdapter);
 
         mAuth = FirebaseAuth.getInstance();
+
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +56,7 @@ public class AdminActivity extends AppCompatActivity {
                 finish();
             }
         });
+
         btnInput = findViewById(R.id.btnInput);
         btnInput.setOnClickListener(new View.OnClickListener() {
             @Override

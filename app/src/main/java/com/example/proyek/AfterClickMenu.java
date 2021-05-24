@@ -66,7 +66,8 @@ public class AfterClickMenu extends AppCompatActivity {
             rvSayur.setLayoutManager(layoutManager);
             rvSayur.setItemAnimator(new DefaultItemAnimator());
 
-            FirebaseRecyclerOptions<ProductModel> options = new FirebaseRecyclerOptions.Builder<ProductModel>().setQuery(FirebaseDatabase.getInstance().getReference().child("Data") , ProductModel.class).build();
+            FirebaseRecyclerOptions<ProductModel> options = new FirebaseRecyclerOptions.Builder<ProductModel>()
+                    .setQuery(FirebaseDatabase.getInstance().getReference().child("Data") , ProductModel.class).build();
             recyclerAdapter = new RvAdapterUser(options);
             rvSayur.setAdapter(recyclerAdapter);
         }else if (Judul.equals("Bumbu")){
