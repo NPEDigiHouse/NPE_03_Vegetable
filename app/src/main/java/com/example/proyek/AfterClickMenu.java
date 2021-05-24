@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.proyek.adapter.RecyclerAdapter;
 import com.example.proyek.adapter.RvAdapterUser;
 import com.example.proyek.settergetter.RvItemSetGet;
-import com.example.proyek.settergetter.Sayur;
+import com.example.proyek.models.product.ProductModel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,7 +23,7 @@ public class AfterClickMenu extends AppCompatActivity {
     private RecyclerView rvSayur;
     RvAdapterUser recyclerAdapter;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    ArrayList<Sayur> listItem = new ArrayList<>();
+    ArrayList<ProductModel> listItem = new ArrayList<>();
     RecyclerView recyclerView;
 
     String Judul;
@@ -67,7 +66,7 @@ public class AfterClickMenu extends AppCompatActivity {
             rvSayur.setLayoutManager(layoutManager);
             rvSayur.setItemAnimator(new DefaultItemAnimator());
 
-            FirebaseRecyclerOptions<Sayur> options = new FirebaseRecyclerOptions.Builder<Sayur>().setQuery(FirebaseDatabase.getInstance().getReference().child("Data") ,Sayur.class).build();
+            FirebaseRecyclerOptions<ProductModel> options = new FirebaseRecyclerOptions.Builder<ProductModel>().setQuery(FirebaseDatabase.getInstance().getReference().child("Data") , ProductModel.class).build();
             recyclerAdapter = new RvAdapterUser(options);
             rvSayur.setAdapter(recyclerAdapter);
         }else if (Judul.equals("Bumbu")){

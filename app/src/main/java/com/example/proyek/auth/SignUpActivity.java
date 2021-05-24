@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyek.R;
-import com.example.proyek.user.UserModel;
+import com.example.proyek.models.user.UserModel;
 import com.example.proyek.activities.GetStartedActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

@@ -1,4 +1,4 @@
-package com.example.proyek.user;
+package com.example.proyek.models.user;
 
 public class UserModel {
     public  String username, email, phoneNumber, as;

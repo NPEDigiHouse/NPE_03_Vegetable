@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyek.R;
-import com.example.proyek.user.UserModel;
+import com.example.proyek.models.user.UserModel;
 import com.example.proyek.activities.GetStartedActivity;
 import com.example.proyek.activities.HomeActivity;
 import com.example.proyek.admin.AdminActivity;

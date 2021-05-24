@@ -14,7 +14,7 @@ import android.widget.Button;
 import com.example.proyek.auth.SignInActivity;
 import com.example.proyek.R;
 import com.example.proyek.adapter.RecyclerAdapter;
-import com.example.proyek.settergetter.Sayur;
+import com.example.proyek.models.product.ProductModel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +28,7 @@ public class AdminActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     RecyclerAdapter recyclerAdapter;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    ArrayList<Sayur> listItem = new ArrayList<>();
+    ArrayList<ProductModel> listItem = new ArrayList<>();
     RecyclerView recyclerView;
 
     @Override
@@ -41,7 +41,7 @@ public class AdminActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        FirebaseRecyclerOptions<Sayur> options = new FirebaseRecyclerOptions.Builder<Sayur>().setQuery(FirebaseDatabase.getInstance().getReference().child("Data") ,Sayur.class).build();
+        FirebaseRecyclerOptions<ProductModel> options = new FirebaseRecyclerOptions.Builder<ProductModel>().setQuery(FirebaseDatabase.getInstance().getReference().child("Data") , ProductModel.class).build();
         recyclerAdapter = new RecyclerAdapter(options);
         recyclerView.setAdapter(recyclerAdapter);
 
