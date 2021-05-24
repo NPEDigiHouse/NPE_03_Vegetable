@@ -22,6 +22,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         Toolbar tbProfileEdit = findViewById(R.id.tbProfileEdit);
+        tbProfileEdit.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24);
         setSupportActionBar(tbProfileEdit);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }

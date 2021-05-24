@@ -16,10 +16,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/detail_menu"
-        app:title="Sayuran Salad"
-        app:titleTextAppearance="@style/ToolbarTitleAppearance"
-        app:titleTextColor="@color/white"
-        tools:targetApi="lollipop" />
+        app:title="@string/empty"
+        tools:targetApi="lollipop">
+
+        <TextView
+            android:id="@+id/tbDetailTitle"
+            style="@style/ToolbarTitleAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/detail_produk"
+            android:textColor="@color/white" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:id="@+id/svDetail"
