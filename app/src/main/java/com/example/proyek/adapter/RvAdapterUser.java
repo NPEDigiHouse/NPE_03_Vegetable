@@ -32,7 +32,7 @@ public class RvAdapterUser extends FirebaseRecyclerAdapter<ProductModel, RvAdapt
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.designrvuser, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_show_more, parent, false);
         return new myViewHolder(view);
     }
 
@@ -41,9 +41,9 @@ public class RvAdapterUser extends FirebaseRecyclerAdapter<ProductModel, RvAdapt
         TextView tvName, tvHarga;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.photoSayur);
-            tvName = itemView.findViewById(R.id.tvJudulSayur);
-            tvHarga = itemView.findViewById(R.id.tvHargaSayur);
+            img = itemView.findViewById(R.id.ivPosterProduct);
+            tvName = itemView.findViewById(R.id.tvTitleProduct);
+            tvHarga = itemView.findViewById(R.id.tvPriceProduct);
         }
     }
 }

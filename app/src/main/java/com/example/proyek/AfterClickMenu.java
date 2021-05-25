@@ -1,11 +1,14 @@
 package com.example.proyek;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.proyek.adapter.RvAdapterUser;
@@ -16,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AfterClickMenu extends AppCompatActivity {
 
@@ -45,7 +49,10 @@ public class AfterClickMenu extends AppCompatActivity {
 //        String name = getIntent().getStringExtra("judul");
 //        tvJudul.setText(name);
 
-
+        Toolbar tbShowMore = findViewById(R.id.tbShowMore);
+        tbShowMore.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24_primary);
+        setSupportActionBar(tbShowMore);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
     private void showRecyclerView() {
@@ -106,5 +113,11 @@ public class AfterClickMenu extends AppCompatActivity {
         super.onStart();
         recyclerAdapter.startListening();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) finish();
+        return true;
     }
 }
