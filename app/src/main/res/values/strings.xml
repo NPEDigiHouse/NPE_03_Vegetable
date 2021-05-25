@@ -62,6 +62,8 @@
     <string name="misal_bayamnya_tidak_usah_ya">Misal : bayamnya tidak usah ya</string>
     <string name="add_to_favorite">add to favorite</string>
     <string name="hapus">Hapus</string>
+    <string name="search_view">Hari ini kamu mau beli apa?</string>
+
     <string name="keranjang_saya">Keranjang Saya</string>
     <string name="keranjang_kamu_masih_kosong">Keranjang Kamu Masih Kosong</string>
     <string name="tunggu_apa_lagi">Tunggu Apa lagi, Buruan beli produk kesukaanmu lalu bayar di sini.</string>
