@@ -16,42 +16,30 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.proyek.AfterClickMenu;
 import com.example.proyek.R;
-import com.example.proyek.RvItem;
-import com.example.proyek.RvItem2;
-import com.example.proyek.adapter.ListAdapterItem;
-import com.example.proyek.adapter.ListAdapterItem2;
+import com.example.proyek.adapter.PacketAdapter;
 import com.example.proyek.adapter.ProductAdapter;
 import com.example.proyek.adapter.RvAdapterUser;
+import com.example.proyek.models.packet.PacketModel;
 import com.example.proyek.models.product.ProductModel;
-import com.example.proyek.settergetter.RvItemSetGet;
-import com.example.proyek.settergetter.RvItemSetGet2;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-
 public class FragmentHome extends Fragment {
     private View view;
-    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference reference;
     private RecyclerView rvNewProduct, rvPacket;
     private ProductAdapter productAdapter;
-    private ArrayList<ProductModel> productList = new ArrayList<>();
-
+    private PacketAdapter packetAdapter;
     private SearchView searchView;
-    private RecyclerView rvListMenu, rvListMenu2;
-
-    private ArrayList<RvItemSetGet> list = new ArrayList<>();
-    private ArrayList<RvItemSetGet2> list2 = new ArrayList<>();
-
-    private RecyclerView.LayoutManager rvLayoutManager;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        reference = FirebaseDatabase.getInstance().getReference();
 
         rvNewProduct = view.findViewById(R.id.rvNewProduct);
         rvNewProduct.setHasFixedSize(true);
@@ -63,10 +51,10 @@ public class FragmentHome extends Fragment {
         searchHint.setHintTextColor(Color.BLACK);
 
         rvPacket = view.findViewById(R.id.rvPacket);
+        rvPacket.setHasFixedSize(true);
 
         showNewProductRV();
         showPacketRV();
-
 
         return view;
     }
@@ -83,43 +71,19 @@ public class FragmentHome extends Fragment {
         productAdapter = new ProductAdapter(options);
 
         rvNewProduct.setAdapter(productAdapter);
-//        listAdapterItem.setOnItemClickCallback(new ListAdapterItem.OnItemClickCallback() {
-//            @Override
-//            public void onItemClicked(RvItemSetGet data) {
-//                Intent i = new Intent(getActivity(), AfterClickMenu.class);
-//                i.putExtra("rv_item", data);
-////                i.putExtra("judul", data.getName());
-//                startActivity(i);
-//            }
-//
-//        });
     }
 
     private void showPacketRV() {
-        list2.addAll(RvItem2.getListData());
-
-        rvPacket.setLayoutManager(new LinearLayoutManager((getActivity())));
-        rvLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-        rvPacket.setLayoutManager(rvLayoutManager);
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         rvPacket.setLayoutManager(horizontalLayoutManager);
-        ListAdapterItem2 listAdapterItem = new ListAdapterItem2(list2);
-        rvPacket.setAdapter(listAdapterItem);
 
-        listAdapterItem.setOnItemClickCallback(new ListAdapterItem2.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(RvItemSetGet2 data) {
-                Intent i = new Intent(getActivity(), AfterClickMenu.class);
-                i.putExtra("rv_item", data);
-                startActivity(i);
-            }
+        rvPacket.setItemAnimator(new DefaultItemAnimator());
 
-        });
+        FirebaseRecyclerOptions<PacketModel> options = new FirebaseRecyclerOptions.Builder<PacketModel>().setLifecycleOwner(getActivity())
+                .setQuery(reference.child("Packet"), PacketModel.class).build();
+
+        packetAdapter = new PacketAdapter(options);
+
+        rvPacket.setAdapter(packetAdapter);
     }
-
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        productAdapter.startListening();
-//    }
 }
