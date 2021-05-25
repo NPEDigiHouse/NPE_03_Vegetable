@@ -210,43 +210,43 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/tvChangePassText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/nunito_sans_bold"
-        android:text="@string/ganti_password"
-        android:textColor="@color/primaryColor"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfPhoneEdit" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvChangePassText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="16dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:fontFamily="@font/nunito_sans_bold"-->
+<!--        android:text="@string/ganti_password"-->
+<!--        android:textColor="@color/primaryColor"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tfPhoneEdit" />-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfPasswordEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/password_baru"
-        app:boxBackgroundColor="@null"
-        app:endIconMode="password_toggle"
-        app:errorEnabled="false"
-        app:errorIconDrawable="@null"
-        app:helperTextTextColor="@color/design_default_color_error"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvChangePassText"
-        app:startIconDrawable="@drawable/ic_outline_lock_24">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/tfPasswordEdit"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="16dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:hint="@string/password_baru"-->
+<!--        app:boxBackgroundColor="@null"-->
+<!--        app:endIconMode="password_toggle"-->
+<!--        app:errorEnabled="false"-->
+<!--        app:errorIconDrawable="@null"-->
+<!--        app:helperTextTextColor="@color/design_default_color_error"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvChangePassText"-->
+<!--        app:startIconDrawable="@drawable/ic_outline_lock_24">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPasswordEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito_sans_semibold"
-            android:inputType="textPassword"
-            android:textColor="@color/black" />
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/etPasswordEdit"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/nunito_sans_semibold"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:textColor="@color/black" />-->
 
-    </com.google.android.material.textfield.TextInputLayout>
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
