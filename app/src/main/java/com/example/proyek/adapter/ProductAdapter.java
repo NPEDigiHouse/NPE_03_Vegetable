@@ -18,6 +18,8 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class ProductAdapter extends FirebaseRecyclerAdapter<ProductModel, ProductAdapter.ViewHolder> {
+    private final int CLASS_CODE = 101;
+
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
@@ -49,6 +51,7 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<ProductModel, Produc
 
                 Intent intent = new Intent(v.getContext(), DetailActivity.class);
                 intent.putExtra("PRODUCT_ID", productId);
+                intent.putExtra("CLASS_CODE", CLASS_CODE);
                 v.getContext().startActivity(intent);
             }
         });

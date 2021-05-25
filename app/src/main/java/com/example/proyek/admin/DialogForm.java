@@ -54,7 +54,7 @@ public class DialogForm extends DialogFragment {
 
                 Map<String, Object> map = new HashMap<>();
                 map.put("name", etName.getText().toString());
-                map.put("harga", etHarga.getText().toString());
+                map.put("price", etHarga.getText().toString());
                 map.put("url", etUrlImage.getText().toString());
                 if (name.isEmpty()){
                     etName.setError("tolong isi nama");
@@ -72,7 +72,7 @@ public class DialogForm extends DialogFragment {
                     return;
                 }
 
-                databaseReference.child("Data").push().setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                databaseReference.child("Packet").push().setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(view.getContext(), "succes input data", Toast.LENGTH_LONG).show();
