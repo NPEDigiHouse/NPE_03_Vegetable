@@ -85,12 +85,13 @@
                 android:id="@+id/tvnewProductShowMore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:fontFamily="@font/nunito_sans"
                 android:text="@string/show_more"
-                android:layout_margin="8dp"
                 android:textColor="@color/secondaryColor"
                 android:textSize="18sp"
                 app:drawableRightCompat="@drawable/ic_baseline_chevron_right_24"
+                app:drawableTint="@color/secondaryColor"
                 app:layout_constraintBottom_toTopOf="@+id/rvNewProduct"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider1" />
@@ -141,6 +142,7 @@
                 android:textColor="@color/secondaryColor"
                 android:textSize="18sp"
                 app:drawableRightCompat="@drawable/ic_baseline_chevron_right_24"
+                app:drawableTint="@color/secondaryColor"
                 app:layout_constraintBottom_toTopOf="@+id/rvPacket"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider2" />
