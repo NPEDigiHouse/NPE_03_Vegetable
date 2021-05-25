@@ -31,7 +31,7 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<ProductModel, Produc
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.design, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_default, parent, false);
         return new ViewHolder(view);
     }
 
@@ -60,9 +60,9 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<ProductModel, Produc
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivProductImg = itemView.findViewById(R.id.ivProductImg);
-            tvProductTitle = itemView.findViewById(R.id.tvProductTitle);
-            tvProductPrice = itemView.findViewById(R.id.tvProductPrice);
+            ivProductImg = itemView.findViewById(R.id.ivProductImgDefault);
+            tvProductTitle = itemView.findViewById(R.id.tvProductTitleDefault);
+            tvProductPrice = itemView.findViewById(R.id.tvProductPriceDefault);
         }
     }
 }

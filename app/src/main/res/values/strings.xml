@@ -70,4 +70,8 @@
     <string name="belanja_sekarang">Belanja Sekarang</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="detail_produk">Detail Produk</string>
+    <string name="search">search</string>
+    <string name="produk_terbaru">Produk Terbaru</string>
+    <string name="show_more">Show more</string>
+    <string name="paket">Paket</string>
 </resources>
