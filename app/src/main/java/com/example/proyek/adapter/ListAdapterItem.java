@@ -24,7 +24,7 @@ public class ListAdapterItem extends RecyclerView.Adapter<ListAdapterItem.ListVi
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.design, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_default, parent, false);
         return  new ListViewHolder(view);
     }
 
@@ -44,7 +44,7 @@ public class ListAdapterItem extends RecyclerView.Adapter<ListAdapterItem.ListVi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickCallback.onItemClicked(listItem.get(holder.getAdapterPosition()));
+                onItemClickCallback.onItemClicked(listItem.get(holder.getBindingAdapterPosition()));
             }
         });
     }
@@ -59,8 +59,8 @@ public class ListAdapterItem extends RecyclerView.Adapter<ListAdapterItem.ListVi
         TextView tvName;
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgPhoto = itemView.findViewById(R.id.ivProductImg);
-            tvName = itemView.findViewById(R.id.tvProductTitle);
+            imgPhoto = itemView.findViewById(R.id.ivProductImgDefault);
+            tvName = itemView.findViewById(R.id.tvProductTitleDefault);
         }
     }
 

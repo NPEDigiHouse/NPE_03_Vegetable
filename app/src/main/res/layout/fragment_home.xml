@@ -1,94 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".auth.SignInActivity">
+    android:layout_height="match_parent"
+    tools:context=".fragments.FragmentHome">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primaryColor">
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/svHome"
-            android:layout_width="match_parent"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:theme="@style/Theme.Proyek"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/home_menu"
+        tools:targetApi="lollipop">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/ToolbarTitleAppearance"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="30dp"
-            android:background="@color/white"
-            app:searchIcon="@drawable/ic_baseline_search_24" />
+            android:text="@string/beranda" />
+
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bungkus1"
+    <ScrollView
+        android:id="@+id/svHome"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tbHome">
 
-        <TextView
-            android:id="@+id/newest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="84dp"
-            android:text="Newest"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvNewProduct"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scrollbars="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/newest"
-            tools:listitem="@layout/design" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/packet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Packet"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvNewProduct"
-            tools:layout_editor_absoluteY="37dp" />
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSliderAds"
+                android:layout_width="match_parent"
+                android:layout_height="172dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorEnabled="true"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMarginBottom="24dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="4dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="@color/white"
+                app:sliderIndicatorUnselectedColor="#40FFFFFF"
+                app:sliderScrollTimeInSec="1" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPacket"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="44dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.187"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/packet"
-            tools:listitem="@layout/design" />
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:background="@color/dividerColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageSliderAds" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_outline_shopping_cart_24"
-            app:backgroundTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.988"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.976" />
+            <TextView
+                android:id="@+id/tvNewProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/produk_terbaru"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+            <TextView
+                android:id="@+id/tvnewProductShowMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/show_more"
+                android:layout_margin="8dp"
+                android:textColor="@color/secondaryColor"
+                android:textSize="18sp"
+                app:drawableRightCompat="@drawable/ic_baseline_chevron_right_24"
+                app:layout_constraintBottom_toTopOf="@+id/rvNewProduct"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider1" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNewProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:paddingHorizontal="8dp"
+                android:scrollbars="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNewProduct"
+                tools:layout_height="200dp"
+                tools:listitem="@layout/item_list_default" />
 
-</RelativeLayout>
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/dividerColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvNewProduct" />
+
+            <TextView
+                android:id="@+id/tvPacketProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/paket"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+            <TextView
+                android:id="@+id/tvpacketProductShowMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/show_more"
+                android:textColor="@color/secondaryColor"
+                android:textSize="18sp"
+                app:drawableRightCompat="@drawable/ic_baseline_chevron_right_24"
+                app:layout_constraintBottom_toTopOf="@+id/rvPacket"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPacket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:paddingHorizontal="8dp"
+                android:scrollbars="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPacketProduct"
+                tools:layout_height="200dp"
+                tools:listitem="@layout/item_list_default" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/dividerColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvPacket" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/white"
+        app:hideMotionSpec="@anim/slide_out_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/lightPrimaryColor"
+        app:showMotionSpec="@anim/slide_in_top"
+        app:srcCompat="@drawable/ic_outline_shopping_cart_24"
+        app:tint="@color/primaryGrey"
+        tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

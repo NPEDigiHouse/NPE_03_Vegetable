@@ -32,7 +32,7 @@
     <!-- Saat keranjang kosong -->
     <!-- Ganti visibility menjadi 'visible' kalau mau lihat -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clEmptyNotify"
+        android:id="@+id/clEmptyCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,7 +80,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCreateOrder"
+            android:id="@+id/btnShopingNow"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

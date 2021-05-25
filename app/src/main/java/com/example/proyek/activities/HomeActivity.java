@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-
 
 import com.example.proyek.R;
 import com.example.proyek.fragments.FragmentFav;
@@ -19,7 +17,6 @@ import com.example.proyek.fragments.FragmentProfile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 
 public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -32,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationItemView = findViewById(R.id.bottom_navigation);
         bottomNavigationItemView.setOnNavigationItemSelectedListener(navListener);
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new FragmentHome())
@@ -43,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = mAuth.getCurrentUser();
-                if (user == null) {
+                if (user != null) {
                     Intent intent = new Intent(HomeActivity.this, GetStartedActivity.class);
                     startActivity(intent);
                 }
@@ -79,8 +77,9 @@ public class HomeActivity extends AppCompatActivity {
                 break;
         }
 
+        assert selectedFragment != null;
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
         return true;
     };
-    
+
 }
