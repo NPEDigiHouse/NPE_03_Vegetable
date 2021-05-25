@@ -44,7 +44,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvItem"
+            android:id="@+id/rvNewProduct"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scrollbars="horizontal"
@@ -61,11 +61,11 @@
             android:text="Packet"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvItem"
+            app:layout_constraintTop_toBottomOf="@id/rvNewProduct"
             tools:layout_editor_absoluteY="37dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvitem2"
+            android:id="@+id/rvPacket"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="44dp"
