@@ -79,5 +79,12 @@
     <string name="tambah_pesanan">Tambah Pesanan</string>
     <string name="rincian_pesanan">Rincian Pesanan</string>
     <string name="rp_0">Rp. 0</string>
-    <string name="total_harga">Total Harga</string>
+    <string name="total_harga">Total Harga :</string>
+    <string name="tidak_ada_instruksi_khusus">Tidak ada instruksi khusus</string>
+    <string name="edit">Edit</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="ongkos_kirim">Ongkos Kirim</string>
+    <string name="biaya_pemesanan">Biaya Pemesanan</string>
+    <string name="detail_pembayaran">Detail Pembayaran</string>
+    <string name="tunai">Tunai</string>
 </resources>

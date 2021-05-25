@@ -30,10 +30,12 @@
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Saat keranjang tidak kosong -->
+    <!-- Ganti visibility menjadi 'visible' saat keranjang tidak kosong -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clCartContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/cvBtnOrderContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,22 +61,23 @@
         </FrameLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout3"
+            android:id="@+id/clUserLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/flTextDeliverTo">
 
-            <View
+            <ImageView
                 android:id="@+id/vFmdGood"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:background="@drawable/ic_baseline_fmd_good_32"
+                android:src="@drawable/ic_baseline_fmd_good_32"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tvUserLocation"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tvUserLocation"
@@ -85,20 +88,22 @@
                 android:fontFamily="@font/nunito_sans_bold"
                 android:maxLines="1"
                 android:textColor="@color/black"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/vChevronRight"
                 app:layout_constraintStart_toEndOf="@id/vFmdGood"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Jl. Panser No.46, Hasanuddin, Mandai, Maros" />
 
-            <View
+            <ImageView
                 android:id="@+id/vChevronRight"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:background="@drawable/ic_baseline_chevron_right_24"
+                android:src="@drawable/ic_baseline_chevron_right_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -109,7 +114,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/dividerColor"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+            app:layout_constraintTop_toBottomOf="@+id/clUserLocation">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -132,13 +137,242 @@
 
         </FrameLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clProductOrderPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flTextOrderDetail">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvProductImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="16dp"
+                android:background="@color/secondaryGrey"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivProductImgDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/salad" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvProductOrderTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cvProductImg"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Sayuran Salad" />
+
+            <TextView
+                android:id="@+id/tvInstructionsOrder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunito_sans"
+                android:maxLines="2"
+                android:text="@string/tidak_ada_instruksi_khusus"
+                android:textColor="@color/secondaryGrey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cvProductImg"
+                app:layout_constraintTop_toBottomOf="@+id/tvProductOrderTitle" />
+
+            <TextView
+                android:id="@+id/tvEditOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/edit"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toEndOf="@+id/cvProductImg"
+                app:layout_constraintTop_toBottomOf="@+id/tvInstructionsOrder" />
+
+            <TextView
+                android:id="@+id/tvOrderCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:textColor="@color/blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvOrderPrice"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2x" />
+
+            <TextView
+                android:id="@+id/tvOrderPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/rp_0"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/lineColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clProductOrderPreview" />
+
+        <FrameLayout
+            android:id="@+id/flSubTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/subtotal"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvSubTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/_0"
+                android:textColor="@color/black" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flOngkir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flSubTotal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/ongkos_kirim"
+                android:textColor="@color/primaryColor" />
+
+            <TextView
+                android:id="@+id/tvOngkir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/_0"
+                android:textColor="@color/primaryColor" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flOrderCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flOngkir">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/biaya_pemesanan"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvOrderCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/nunito_sans"
+                android:text="@string/_0"
+                android:textColor="@color/black" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flTextPaymentMethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/dividerColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flOrderCost">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/detail_pembayaran"
+                android:textColor="@color/primaryGrey"
+                android:textSize="18sp" />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/nunito_sans"
+            android:text="@string/tunai"
+            android:textColor="@color/black"
+            app:drawableLeftCompat="@drawable/ic_money"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flTextPaymentMethod" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Saat keranjang tidak kosong -->
+    <!-- Ganti visibility menjadi 'visible' saat keranjang tidak kosong -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cvBtnOrderContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:cardElevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +392,7 @@
                 android:fontFamily="@font/nunito_sans_bold"
                 android:text="@string/total_harga"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -166,10 +400,10 @@
                 android:id="@+id/tvTotalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_sans"
+                android:fontFamily="@font/nunito_sans_bold"
                 android:text="@string/rp_0"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -191,12 +425,12 @@
     </androidx.cardview.widget.CardView>
 
     <!-- Saat keranjang kosong -->
-    <!-- Ganti visibility menjadi 'visible' kalau mau lihat -->
+    <!-- Ganti visibility menjadi 'gone' saat keranjang tidak kosong -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clEmptyCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

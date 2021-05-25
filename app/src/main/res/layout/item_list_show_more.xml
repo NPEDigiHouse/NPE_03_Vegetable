@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clProductContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvPosterProduct"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_margin="8dp"
+            android:background="@color/secondaryGrey"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivPosterProduct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/salad" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvTitleProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cvPosterProduct"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Sayuran Salad" />
+
+        <TextView
+            android:id="@+id/tvPriceProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:textColor="@color/primaryColor"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/cvPosterProduct"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleProduct"
+            tools:text="Rp25.000" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@id/cvPosterProduct"
+            app:layout_constraintTop_toBottomOf="@id/tvPriceProduct">
+
+            <TextView
+                android:id="@+id/tvRatingProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/nunito_sans"
+                android:textColor="@color/primaryGrey"
+                app:drawableStartCompat="@drawable/ic_baseline_star_24"
+                app:drawableTint="@color/secondaryColor"
+                tools:text="9.4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:text="@string/dot" />
+
+            <TextView
+                android:id="@+id/tvOrdersProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/nunito_sans"
+                android:textColor="@color/primaryGrey"
+                app:drawableStartCompat="@drawable/ic_outline_shopping_cart_18"
+                app:drawableTint="@color/primaryGrey"
+                tools:text="3rb" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:text="@string/dot" />
+
+            <TextView
+                android:id="@+id/tvOngkirProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/nunito_sans"
+                android:textColor="@color/primaryGrey"
+                app:drawableStartCompat="@drawable/ic_outline_delivery_dining_18"
+                app:drawableTint="@color/primaryGrey"
+                tools:text="Rp7.000" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPlaceProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_sans"
+            android:maxLines="1"
+            android:textColor="@color/primaryGrey"
+            app:drawableStartCompat="@drawable/ic_outline_place_18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cvPosterProduct"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:text="Central Friut Makassar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
