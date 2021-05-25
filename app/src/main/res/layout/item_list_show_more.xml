@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvPosterProduct"
@@ -87,7 +88,7 @@
                 android:textColor="@color/primaryGrey"
                 app:drawableStartCompat="@drawable/ic_baseline_star_24"
                 app:drawableTint="@color/secondaryColor"
-                tools:text="9.4" />
+                android:text="9.4" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -104,7 +105,7 @@
                 android:textColor="@color/primaryGrey"
                 app:drawableStartCompat="@drawable/ic_outline_shopping_cart_18"
                 app:drawableTint="@color/primaryGrey"
-                tools:text="3rb" />
+                android:text="3rb" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -121,7 +122,7 @@
                 android:textColor="@color/primaryGrey"
                 app:drawableStartCompat="@drawable/ic_outline_delivery_dining_18"
                 app:drawableTint="@color/primaryGrey"
-                tools:text="Rp7.000" />
+                android:text="Rp7.000" />
 
         </LinearLayout>
 
@@ -141,7 +142,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cvPosterProduct"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            tools:text="Central Friut Makassar" />
+            android:text="Central Friut Makassar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

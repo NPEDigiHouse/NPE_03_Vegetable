@@ -36,7 +36,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class SignInActivity extends AppCompatActivity {
+    /* class ini berfungsi jika user ingin login/signin
+    di kelas ini akan mencakup 2 cara untuk register yaitu dgn email+pass atau dengan akun google
+     */
 
+    // variabel
     private FirebaseAuth mAuth;
     private TextInputEditText etUsernameOrEmail, etPassword;
     private Button btnSignIn, btnGoogleSignIn;
@@ -51,6 +55,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        // inisialisasi variabel
         mAuth = FirebaseAuth.getInstance();
         etUsernameOrEmail = findViewById(R.id.etUsernameorEmail);
         etPassword = findViewById(R.id.etPassword);
@@ -72,32 +77,34 @@ public class SignInActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // mengambil data String dari edit text
                 String email = etUsernameOrEmail.getText().toString();
                 String password = etPassword.getText().toString();
 
                 if (email.isEmpty()) {
-                    etUsernameOrEmail.setError("Mohon masukkan email anda !");
+                    etUsernameOrEmail.setError("Please input your email address");
                     etUsernameOrEmail.requestFocus();
                 } else if (!isUsernameValid(email)) {
-                    etUsernameOrEmail.setError("Mohon masukkan email yang valid !");
+                    etUsernameOrEmail.setError("Please input a valid email address");
                     etUsernameOrEmail.requestFocus();
                 } else if (password.isEmpty()) {
-                    etPassword.setError("Mohon masukkan password anda !");
-                    etPassword.requestFocus();
-                } else if (password.length() < 6) {
-                    etPassword.setError("Password harus lebih dari 6 karakter !");
+                    etPassword.setError("Please input your password");
                     etPassword.requestFocus();
                 } else if (email.isEmpty() && password.isEmpty()) {
                     Toast.makeText(SignInActivity.this, "Please fill the empty space !", Toast.LENGTH_SHORT).show();
                 } else if (!(email.isEmpty() && password.isEmpty())) {
+                    // login degan email dan password dengan FirebaseAuth
                     mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                // menginisialisasi FirebaseDatabase
                                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                                // membaca data dari FirebaseDatabase dengan child "Login"
                                 databaseReference.child("Login").addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        // mengecek role user apakah user memiliki role "admin" atau "user"
                                         if (snapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("as").getValue(String.class).equals("admin")) {
                                             Intent intent = new Intent(SignInActivity.this, AdminActivity.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -115,16 +122,17 @@ public class SignInActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
-                                Toast.makeText(SignInActivity.this, "Tolon masukkan email atau password yang terdaftar !", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignInActivity.this, "Please enter the registered email and password", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 } else {
-                    Toast.makeText(SignInActivity.this, "Telah terjadi kesalahan, mohon coba ulang", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, "An error has occured, please try again", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
+        // untuk login menggunakan akun google
         btnGoogleSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,34 +149,8 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        FirebaseUser user = mAuth.getCurrentUser();
-////        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-//
-//        if (user != null){
-//            startActivity(new Intent(SignInActivity.this, HomeActivity.class));
-//            finish();
-////            databaseReference.child("Login").addListenerForSingleValueEvent(new ValueEventListener() {
-////                @Override
-////                public void onDataChange(@NonNull DataSnapshot snapshot) {
-////                    if (snapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("as").getValue(String.class).equals("admin")){
-////                        startActivity(new Intent(MainActivity.this, AdminActivity.class));
-////                        finish();
-////                    }else {
-////
-////                    }
-////                }
-////
-////                @Override
-////                public void onCancelled(@NonNull DatabaseError error) {
-////
-////                }
-////            });
-//        }
-//    }
-
+    // method ini berasal dari documentation FirebaseAuth tentang login dengan akun Google
+    // method ini berfungsi untuk membuat request
     private void createRequest() {
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -180,11 +162,13 @@ public class SignInActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
 
+    // method ini berfungsi untuk signin
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    // dari pemanggilan startActivityForResult(signInIntent, RC_SIGN_IN);
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -204,15 +188,16 @@ public class SignInActivity extends AppCompatActivity {
         }
     }
 
+    // method ini berfunsi untuk melakukan login dengan akun google
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        // login dengan akun google ke FirebaseAuth
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
-                            // Sign in success, update UI with the signed-in user's information
                             FirebaseUser mUser = mAuth.getCurrentUser();
                             String role = "user";
 
@@ -221,6 +206,7 @@ public class SignInActivity extends AppCompatActivity {
                             String phone = mUser.getPhoneNumber();
                             UserModel user = new UserModel(username, email, phone, role);
 
+                            // mendaftarkan akun yang tadi digunakan untuk login dengan google kedalam FirebaseDatabase
                             FirebaseDatabase.getInstance().getReference("Login").child(FirebaseAuth.getInstance().getCurrentUser()
                                     .getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

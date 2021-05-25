@@ -57,7 +57,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".AfterClickMenu"
+            android:name=".activities.ShowMoreActivity"
             android:screenOrientation="portrait" />
 
         <activity

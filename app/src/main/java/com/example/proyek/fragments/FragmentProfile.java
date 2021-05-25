@@ -30,6 +30,9 @@ import com.google.firebase.database.ValueEventListener;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FragmentProfile extends Fragment {
+    // class untuk fragment profil
+
+    // variabel
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -44,22 +47,27 @@ public class FragmentProfile extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // inisialisasi variabel
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         userID = user.getUid();
+        // sebagai referensi FirebaseDatabase untuk mengambil data user
         reference = FirebaseDatabase.getInstance().getReference("Login").child(mAuth.getUid());
 
+        // toolbar
         tbProfile = view.findViewById(R.id.tbProfile);
         tbProfile.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 int id = item.getItemId();
+                // jika mengclick icon settings
                 if (id == R.id.profileSettings) {
                     Intent intent = new Intent(getActivity(), EditProfileActivity.class);
                     startActivity(intent);
-                } else if (id == R.id.signOut) {
+                } else if (id == R.id.signOut) { // jika mengclick icon signout
+                    // menampilkan dialogbox
                     dialogBox = new Dialog(getActivity());
                     dialogBox.setContentView(R.layout.dialog_box_sign_out);
                     dialogBox.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -67,6 +75,7 @@ public class FragmentProfile extends Fragment {
                     dialogBox.setCancelable(true);
                     dialogBox.getWindow().getAttributes().windowAnimations = R.style.DialogBoxAnimation;
 
+                    // inisialisasi button
                     mBtnSignOutFalse = dialogBox.findViewById(R.id.btnSignOutFalse);
                     mBtnSignOutTrue = dialogBox.findViewById(R.id.btnSignOutTrue);
 
@@ -97,6 +106,7 @@ public class FragmentProfile extends Fragment {
         tvName = view.findViewById(R.id.tvName);
         tvEmail = view.findViewById(R.id.tvEmail);
 
+        // membaca data dari FirebaseDatabase berdasarkan child Uid atau data dari user
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

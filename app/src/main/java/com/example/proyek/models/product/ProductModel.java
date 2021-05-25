@@ -3,9 +3,11 @@ package com.example.proyek.models.product;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ProductModel implements Parcelable {
+public class ProductModel {
+    // Variable
     private String name, price, url;
 
+    // Constructor
     public ProductModel(){
 
     }
@@ -16,24 +18,7 @@ public class ProductModel implements Parcelable {
         this.url = url;
     }
 
-    protected ProductModel(Parcel in) {
-        name = in.readString();
-        price = in.readString();
-        url = in.readString();
-    }
-
-    public static final Creator<ProductModel> CREATOR = new Creator<ProductModel>() {
-        @Override
-        public ProductModel createFromParcel(Parcel in) {
-            return new ProductModel(in);
-        }
-
-        @Override
-        public ProductModel[] newArray(int size) {
-            return new ProductModel[size];
-        }
-    };
-
+    // Setter dan Getter
     public String getPrice() {
         return price;
     }
@@ -58,15 +43,4 @@ public class ProductModel implements Parcelable {
         this.url = url;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(price);
-        dest.writeString(url);
-    }
 }

@@ -13,48 +13,50 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.proyek.R;
 import com.example.proyek.activities.DetailActivity;
-import com.example.proyek.models.product.ProductModel;
+import com.example.proyek.models.packet.PacketModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class ProductAdapter extends FirebaseRecyclerAdapter<ProductModel, ProductAdapter.ViewHolder> {
-    private static final int CLASS_ID = 101;
-
+public class ShowMoreAdapter extends FirebaseRecyclerAdapter<PacketModel, ShowMoreAdapter.ViewHolder> {
+    private final int CLASS_ID = 103;
+    private String child;
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
      *
      * @param options
      */
-    public ProductAdapter(@NonNull FirebaseRecyclerOptions options) {
+    public ShowMoreAdapter(@NonNull FirebaseRecyclerOptions<PacketModel> options, String child) {
         super(options);
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_default, parent, false);
-        return new ViewHolder(view);
+        this.child = child;
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int i, @NonNull ProductModel productModel) {
-        String price = "Rp. " + productModel.getPrice();
-        Glide.with(viewHolder.ivProductImg.getContext()).load(productModel.getUrl()).into(viewHolder.ivProductImg);
-        viewHolder.tvProductTitle.setText(productModel.getName());
+    protected void onBindViewHolder(@NonNull ShowMoreAdapter.ViewHolder viewHolder, int i, @NonNull PacketModel packetModel) {
+        String price = "Rp. " + packetModel.getPrice();
+        Glide.with(viewHolder.ivProductImg.getContext()).load(packetModel.getUrl()).into(viewHolder.ivProductImg);
+        viewHolder.tvProductTitle.setText(packetModel.getName());
         viewHolder.tvProductPrice.setText(price);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String productId = getRef(i).getKey();
+                String packetId = getRef(i).getKey();
 
                 Intent intent = new Intent(v.getContext(), DetailActivity.class);
-                intent.putExtra("CHILD_ID", productId);
                 intent.putExtra("CLASS_ID", CLASS_ID);
+                intent.putExtra("CHILD_ID", packetId);
+                intent.putExtra("CHILD", child);
                 v.getContext().startActivity(intent);
             }
         });
+    }
+
+    @NonNull
+    @Override
+    public ShowMoreAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_show_more, parent, false);
+        return new ViewHolder(view);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -63,9 +65,9 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<ProductModel, Produc
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivProductImg = itemView.findViewById(R.id.ivProductImgDefault);
-            tvProductTitle = itemView.findViewById(R.id.tvProductTitleDefault);
-            tvProductPrice = itemView.findViewById(R.id.tvProductPriceDefault);
+            ivProductImg = itemView.findViewById(R.id.ivPosterProduct);
+            tvProductTitle = itemView.findViewById(R.id.tvTitleProduct);
+            tvProductPrice = itemView.findViewById(R.id.tvPriceProduct);
         }
     }
 }
