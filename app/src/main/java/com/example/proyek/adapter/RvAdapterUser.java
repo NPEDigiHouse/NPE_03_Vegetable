@@ -11,20 +11,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.proyek.R;
-import com.example.proyek.settergetter.Sayur;
+import com.example.proyek.models.product.ProductModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class RvAdapterUser extends FirebaseRecyclerAdapter<Sayur, RvAdapterUser.myViewHolder> {
+public class RvAdapterUser extends FirebaseRecyclerAdapter<ProductModel, RvAdapterUser.myViewHolder> {
 
-    public RvAdapterUser(@NonNull FirebaseRecyclerOptions<Sayur> options) {
+    public RvAdapterUser(@NonNull FirebaseRecyclerOptions<ProductModel> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull myViewHolder myViewHolder, int i, @NonNull Sayur sayur) {
+    protected void onBindViewHolder(@NonNull myViewHolder myViewHolder, int i, @NonNull ProductModel sayur) {
         myViewHolder.tvName.setText(sayur.getName());
-        myViewHolder.tvHarga.setText(sayur.getHarga());
+        myViewHolder.tvHarga.setText(sayur.getPrice());
         Glide.with(myViewHolder.img.getContext()).load(sayur.getUrl()).into(myViewHolder.img);
     }
 

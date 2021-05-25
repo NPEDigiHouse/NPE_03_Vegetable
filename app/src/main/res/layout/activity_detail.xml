@@ -106,17 +106,18 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:id="@+id/ivPosterDetail"
+                            android:id="@+id/ivPosterImg"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
+                            android:src="@drawable/salad"
                             tools:ignore="ContentDescription"
-                            tools:src="@drawable/salad" />
+                             />
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:id="@+id/tvProductTitleDetail"
+                        android:id="@+id/tvProductTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
@@ -132,7 +133,7 @@
                         tools:text="Sayuran Salad" />
 
                     <TextView
-                        android:id="@+id/tvProductPriceDetail"
+                        android:id="@+id/tvProductPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
@@ -140,7 +141,7 @@
                         android:textColor="@color/white"
                         android:textSize="22sp"
                         app:layout_constraintStart_toEndOf="@id/cvPosterDetail"
-                        app:layout_constraintTop_toBottomOf="@id/tvProductTitleDetail"
+                        app:layout_constraintTop_toBottomOf="@id/tvProductTitle"
                         tools:text="Rp25.000" />
 
                     <LinearLayout
@@ -151,7 +152,7 @@
                         android:layout_marginTop="4dp"
                         android:orientation="horizontal"
                         app:layout_constraintStart_toEndOf="@+id/cvPosterDetail"
-                        app:layout_constraintTop_toBottomOf="@+id/tvProductPriceDetail">
+                        app:layout_constraintTop_toBottomOf="@+id/tvProductPrice">
 
                         <RatingBar
                             android:id="@+id/rbProductVoteAverage"
@@ -313,11 +314,12 @@
                     android:fontFamily="@font/nunito_sans_bold"
                     android:textColor="@color/black"
                     android:textSize="24sp"
+                    android:text="0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/btnIncreaseOrder"
                     app:layout_constraintStart_toEndOf="@id/btnDecreaseOrder"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="2" />
+                    />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnIncreaseOrder"
@@ -360,7 +362,7 @@
             android:textAllCaps="false"
             android:textSize="16sp"
             android:visibility="visible"
-            tools:text="Tambah ke Keranjang - 50.000" />
+            android:text="Add to Cart - Rp. 0" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDeleteOrder"
