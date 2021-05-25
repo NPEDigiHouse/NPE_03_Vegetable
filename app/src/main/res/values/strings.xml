@@ -24,7 +24,7 @@
     <string name="profile">Profile</string>
     <string name="riwayat_pesanan_masih_kosong">Riwayat Pesanan Masih Kosong</string>
     <string name="produk_yang_telah">Produk yang telah anda pesan nantinya akan muncul di sini.</string>
-    <string name="favorites_masih_kosong">Favorites Masih Kosong</string>
+    <string name="favorites_masih_kosong">Favorit Masih Kosong</string>
     <string name="produk_yang_anda_sukai">Tekan gambar hati pada produk yang anda sukai dan kami akan menaruhnya di sini.</string>
     <string name="notifikasi_masih_kosong">Notifikasi Masih Kosong</string>
     <string name="jangan_lupa_untuk">Jangan lupa untuk selalu mengecek update terbaru kami ya.</string>
@@ -63,7 +63,6 @@
     <string name="add_to_favorite">add to favorite</string>
     <string name="hapus">Hapus</string>
     <string name="search_view">Hari ini kamu mau beli apa?</string>
-
     <string name="keranjang_saya">Keranjang Saya</string>
     <string name="keranjang_kamu_masih_kosong">Keranjang Kamu Masih Kosong</string>
     <string name="tunggu_apa_lagi">Tunggu Apa lagi, Buruan beli produk kesukaanmu lalu bayar di sini.</string>
@@ -74,4 +73,11 @@
     <string name="produk_terbaru">Produk Terbaru</string>
     <string name="show_more">Show more</string>
     <string name="paket">Paket</string>
+    <string name="antar_ke">Antar Ke</string>
+    <string name="_0">0</string>
+    <string name="add_to_cart_rp_0">Add to Cart - Rp. 0</string>
+    <string name="tambah_pesanan">Tambah Pesanan</string>
+    <string name="rincian_pesanan">Rincian Pesanan</string>
+    <string name="rp_0">Rp. 0</string>
+    <string name="total_harga">Total Harga</string>
 </resources>

@@ -30,8 +30,8 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
-        android:id="@+id/svDetail"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clDetailContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/cvBtnContainer"
@@ -40,306 +40,298 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clDetailDesc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/clDetail"
+                android:id="@+id/clDetailBanner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="240dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clDetailBanner"
+                <ImageView
+                    android:id="@+id/ivProductDetailBanner"
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/salad" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/profile_image_gradient"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/profile_image_gradient_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clDetailProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="112dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/clDetailBanner">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPosterDetail"
+                    android:layout_width="120dp"
+                    android:layout_height="160dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/ivProductDetailBanner"
+                        android:id="@+id/ivPosterImg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription"
-                        tools:src="@drawable/salad" />
+                        android:src="@drawable/salad"
+                        tools:ignore="ContentDescription" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/profile_image_gradient"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/profile_image_gradient_2"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clDetailContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="112dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/clDetailBanner">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cvPosterDetail"
-                        android:layout_width="120dp"
-                        android:layout_height="160dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginVertical="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <ImageView
-                            android:id="@+id/ivPosterImg"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/salad"
-                            tools:ignore="ContentDescription"
-                             />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/tvProductTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="12dp"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/nunito_sans"
-                        android:maxLines="2"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/cvPosterDetail"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Sayuran Salad" />
-
-                    <TextView
-                        android:id="@+id/tvProductPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:fontFamily="@font/nunito_sans_bold"
-                        android:textColor="@color/white"
-                        android:textSize="22sp"
-                        app:layout_constraintStart_toEndOf="@id/cvPosterDetail"
-                        app:layout_constraintTop_toBottomOf="@id/tvProductTitle"
-                        tools:text="Rp25.000" />
-
-                    <LinearLayout
-                        android:id="@+id/llRatingBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="4dp"
-                        android:orientation="horizontal"
-                        app:layout_constraintStart_toEndOf="@+id/cvPosterDetail"
-                        app:layout_constraintTop_toBottomOf="@+id/tvProductPrice">
-
-                        <RatingBar
-                            android:id="@+id/rbProductVoteAverage"
-                            style="?android:attr/ratingBarStyleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="12dp"
-                            android:layout_marginRight="12dp"
-                            android:isIndicator="true"
-                            android:numStars="5"
-                            android:progressBackgroundTint="@color/white"
-                            android:progressTint="@color/secondaryColor"
-                            android:rating="3.5"
-                            android:scaleX="1.1"
-                            android:scaleY="1.1"
-                            android:stepSize="0.01"
-                            android:transformPivotX="0dp"
-                            android:transformPivotY="0dp"
-                            tools:targetApi="lollipop" />
-
-                        <TextView
-                            android:id="@+id/tvProductVoteAverage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunito_sans_bold"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"
-                            tools:text="7.5" />
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/tvProductPlace"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="12dp"
-                android:drawablePadding="4dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/nunito_sans_semibold"
-                android:maxLines="1"
-                android:textColor="@color/primaryGrey"
-                android:textSize="16sp"
-                app:drawableLeftCompat="@drawable/ic_outline_place_24"
-                app:drawableTint="@color/primaryColor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/clDetail"
-                tools:text="Central Fruit Makassar" />
-
-            <TextView
-                android:id="@+id/tvProductTotalSoldOut"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                android:drawablePadding="4dp"
-                android:fontFamily="@font/nunito_sans_semibold"
-                android:textColor="@color/primaryGrey"
-                android:textSize="16sp"
-                app:drawableLeftCompat="@drawable/ic_outline_shopping_cart_24"
-                app:drawableTint="@color/primaryColor"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvProductPlace"
-                tools:text="3rb telah terjual" />
-
-            <TextView
-                android:id="@+id/tvProductOngkir"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                android:drawablePadding="4dp"
-                android:fontFamily="@font/nunito_sans_semibold"
-                android:textColor="@color/primaryGrey"
-                android:textSize="16sp"
-                app:drawableLeftCompat="@drawable/ic_outline_delivery_dining_24"
-                app:drawableTint="@color/primaryColor"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvProductTotalSoldOut"
-                tools:text="Ongkos kirim Rp7.000" />
-
-            <View
-                android:id="@+id/vDivider"
-                android:layout_width="match_parent"
-                android:layout_height="12dp"
-                android:layout_marginTop="16dp"
-                android:background="@color/dividerColor"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvProductOngkir" />
-
-            <TextView
-                android:id="@+id/tvInstructionsText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/nunito_sans_bold"
-                android:text="@string/pesan_instruksi_tidak_wajib"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vDivider" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tfInstructions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                app:boxBackgroundColor="@null"
-                app:errorEnabled="false"
-                app:hintEnabled="false"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvInstructionsText">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etInstructions"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_sans_semibold"
-                    android:hint="@string/misal_bayamnya_tidak_usah_ya"
-                    android:inputType="text"
-                    android:textColor="@color/black" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="28dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tfInstructions">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnDecreaseOrder"
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="58dp"
-                    app:cornerRadius="8dp"
-                    app:icon="@drawable/ic_baseline_remove_24"
-                    app:iconGravity="top"
-                    app:iconSize="40dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/tvTotalOrder"
+                    android:id="@+id/tvProductTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/nunito_sans"
+                    android:maxLines="2"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cvPosterDetail"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Sayuran Salad" />
+
+                <TextView
+                    android:id="@+id/tvProductPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginHorizontal="16dp"
                     android:fontFamily="@font/nunito_sans_bold"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:text="0"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btnIncreaseOrder"
-                    app:layout_constraintStart_toEndOf="@id/btnDecreaseOrder"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toEndOf="@id/cvPosterDetail"
+                    app:layout_constraintTop_toBottomOf="@id/tvProductTitle"
+                    tools:text="Rp25.000" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnIncreaseOrder"
-                    style="?attr/materialButtonOutlinedStyle"
+                <LinearLayout
+                    android:id="@+id/llRatingBar"
                     android:layout_width="wrap_content"
-                    android:layout_height="58dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    app:cornerRadius="8dp"
-                    app:icon="@drawable/ic_baseline_add_24"
-                    app:iconGravity="top"
-                    app:iconSize="40dp"
-                    app:layout_constraintStart_toEndOf="@+id/tvTotalOrder"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@+id/cvPosterDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/tvProductPrice">
+
+                    <RatingBar
+                        android:id="@+id/rbProductVoteAverage"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:progressBackgroundTint="@color/white"
+                        android:progressTint="@color/secondaryColor"
+                        android:rating="3.5"
+                        android:scaleX="1.1"
+                        android:scaleY="1.1"
+                        android:stepSize="0.01"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp"
+                        tools:targetApi="lollipop" />
+
+                    <TextView
+                        android:id="@+id/tvProductVoteAverage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        tools:text="7.5" />
+
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+        <TextView
+            android:id="@+id/tvProductPlace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:drawablePadding="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:maxLines="1"
+            android:textColor="@color/primaryGrey"
+            android:textSize="16sp"
+            app:drawableLeftCompat="@drawable/ic_outline_place_24"
+            app:drawableTint="@color/primaryColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clDetailDesc"
+            tools:text="Central Fruit Makassar" />
+
+        <TextView
+            android:id="@+id/tvProductTotalSoldOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:textColor="@color/primaryGrey"
+            android:textSize="16sp"
+            app:drawableLeftCompat="@drawable/ic_outline_shopping_cart_24"
+            app:drawableTint="@color/primaryColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProductPlace"
+            tools:text="3rb telah terjual" />
+
+        <TextView
+            android:id="@+id/tvProductOngkir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:textColor="@color/primaryGrey"
+            android:textSize="16sp"
+            app:drawableLeftCompat="@drawable/ic_outline_delivery_dining_24"
+            app:drawableTint="@color/primaryColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProductTotalSoldOut"
+            tools:text="Ongkos kirim Rp7.000" />
+
+        <View
+            android:id="@+id/vDivider"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/dividerColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProductOngkir" />
+
+        <TextView
+            android:id="@+id/tvInstructionsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:text="@string/pesan_instruksi_tidak_wajib"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vDivider" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            app:boxBackgroundColor="@null"
+            app:errorEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvInstructionsText">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etInstructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans_semibold"
+                android:hint="@string/misal_bayamnya_tidak_usah_ya"
+                android:inputType="text"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tfInstructions">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDecreaseOrder"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="58dp"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_baseline_remove_24"
+                app:iconGravity="top"
+                app:iconSize="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="@string/_0"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnIncreaseOrder"
+                app:layout_constraintStart_toEndOf="@id/btnDecreaseOrder"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnIncreaseOrder"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="58dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_baseline_add_24"
+                app:iconGravity="top"
+                app:iconSize="40dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalOrder"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvBtnContainer"
@@ -349,7 +341,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/svDetail">
+        app:layout_constraintTop_toBottomOf="@id/clDetailContainer">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCreateOrder"
@@ -359,10 +351,10 @@
             android:layout_margin="16dp"
             android:fontFamily="@font/nunito_sans_bold"
             android:padding="12dp"
+            android:text="@string/add_to_cart_rp_0"
             android:textAllCaps="false"
             android:textSize="16sp"
-            android:visibility="visible"
-            android:text="Add to Cart - Rp. 0" />
+            android:visibility="visible" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDeleteOrder"
