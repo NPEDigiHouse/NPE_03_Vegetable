@@ -1,23 +1,24 @@
 package com.example.proyek.fragments;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import com.example.proyek.auth.SignInActivity;
 import com.example.proyek.R;
-import com.example.proyek.User;
+import com.example.proyek.activities.EditProfileActivity;
+import com.example.proyek.models.user.UserModel;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,62 +30,94 @@ import com.google.firebase.database.ValueEventListener;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FragmentProfile extends Fragment {
-
-    private View view;
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private DatabaseReference reference;
     private Toolbar tbProfile;
     private CircleImageView civProfileImg;
-
-//    private Button btnOut;
-//    private FirebaseUser user;
-//    private DatabaseReference reference;
-//    private String userID;
-//    private FirebaseAuth mAuth;
+    private TextView tvName, tvEmail;
+    private String userID;
+    private View view;
+    private Dialog dialogBox;
+    private MaterialButton mBtnSignOutTrue, mBtnSignOutFalse;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        reference = FirebaseDatabase.getInstance().getReference("User");
-//        userID = user.getUid();
-//        mAuth = FirebaseAuth.getInstance();
-//
-//        final TextView textViewName = view.findViewById(R.id.tvName);
-//        final TextView textViewEmail = view.findViewById(R.id.tvEmail);
-//
-//        btnOut = view.findViewById(R.id.btnOut);
-//        btnOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mAuth.signOut();
-//                Intent a = new Intent(getActivity(), SignInActivity.class);
-//                a.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(a);
-//                getActivity().finish();
-//            }
-//        });
-//
-//        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                User userProfile = snapshot.getValue(User.class);
-//                if (userProfile != null){
-//                    String username = userProfile.username;
-//                    String email = userProfile.email;
-//
-//                    textViewEmail.setText(email);
-//                    textViewName.setText(username);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//                Toast.makeText(getActivity(), "something wrong", Toast.LENGTH_LONG).show();
-//            }
-//        });
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        userID = user.getUid();
+        reference = FirebaseDatabase.getInstance().getReference("Login").child(mAuth.getUid());
+
+        tbProfile = view.findViewById(R.id.tbProfile);
+        tbProfile.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.profileSettings) {
+                    Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                    startActivity(intent);
+                } else if (id == R.id.signOut) {
+                    dialogBox = new Dialog(getActivity());
+                    dialogBox.setContentView(R.layout.dialog_box_sign_out);
+                    dialogBox.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialogBox.setCancelable(true);
+                    dialogBox.getWindow().getAttributes().windowAnimations = R.style.DialogBoxAnimation;
+
+                    mBtnSignOutFalse = dialogBox.findViewById(R.id.btnSignOutFalse);
+                    mBtnSignOutTrue = dialogBox.findViewById(R.id.btnSignOutTrue);
+
+                    mBtnSignOutFalse.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialogBox.dismiss();
+                        }
+                    });
+
+                    mBtnSignOutTrue.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mAuth.signOut();
+                            dialogBox.dismiss();
+                        }
+                    });
+
+                    dialogBox.show();
+
+                    Toast.makeText(getActivity(), "You choose SignOut", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+
+        civProfileImg = view.findViewById(R.id.civImageProfile);
+        tvName = view.findViewById(R.id.tvName);
+        tvEmail = view.findViewById(R.id.tvEmail);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserModel user = snapshot.getValue(UserModel.class);
+
+                tvName.setText(user.getUsername());
+                tvEmail.setText(user.getEmail());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Fail to retrieve data", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(false);
     }
 }

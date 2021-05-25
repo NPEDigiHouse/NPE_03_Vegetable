@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.proyek.R;
-import com.example.proyek.settergetter.Sayur;
+import com.example.proyek.models.product.ProductModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,21 +24,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RecyclerAdapter extends FirebaseRecyclerAdapter<Sayur, RecyclerAdapter.myViewHolder> {
+public class RecyclerAdapter extends FirebaseRecyclerAdapter<ProductModel, RecyclerAdapter.myViewHolder> {
 
-    public RecyclerAdapter(@NonNull FirebaseRecyclerOptions<Sayur> options) {
+    public RecyclerAdapter(@NonNull FirebaseRecyclerOptions<ProductModel> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull myViewHolder myViewHolder, final int position, @NonNull Sayur sayur) {
+    protected void onBindViewHolder(@NonNull myViewHolder myViewHolder, final int position, @NonNull ProductModel sayur) {
 
         myViewHolder.tvName.setText(sayur.getName());
-        myViewHolder.tvHarga.setText(sayur.getHarga());
+        myViewHolder.tvHarga.setText(sayur.getPrice());
         Glide.with(myViewHolder.img.getContext()).load(sayur.getUrl()).into(myViewHolder.img);
 
         myViewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +77,7 @@ public class RecyclerAdapter extends FirebaseRecyclerAdapter<Sayur, RecyclerAdap
 
                 url.setText(sayur.getUrl());
                 name.setText(sayur.getName());
-                harga.setText(sayur.getHarga());
+                harga.setText(sayur.getPrice());
                 dialogPlus.show();
                 update.setOnClickListener(new View.OnClickListener() {
                     @Override
