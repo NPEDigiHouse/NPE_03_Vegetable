@@ -73,7 +73,7 @@
     <string name="produk_terbaru">Produk Terbaru</string>
     <string name="show_more">Show more</string>
     <string name="paket">Paket</string>
-    <string name="antar_ke">Antar Ke</string>
+    <string name="antar_ke">Antar Ke…</string>
     <string name="_0">0</string>
     <string name="add_to_cart_rp_0">Add to Cart - Rp. 0</string>
     <string name="tambah_pesanan">Tambah Pesanan</string>
@@ -87,4 +87,9 @@
     <string name="biaya_pemesanan">Biaya Pemesanan</string>
     <string name="detail_pembayaran">Detail Pembayaran</string>
     <string name="tunai">Tunai</string>
+    <string name="detail_pesanan">Detail Pesanan</string>
+    <string name="lokasi_sekarang">Lokasi Sekarang</string>
+    <string name="konfirmasi">Konfirmasi</string>
+    <string name="gunakan_lokasi_saat_ini">Gunakan lokasi saat ini</string>
+    <string name="alamat_pengiriman">Alamat Pengiriman</string>
 </resources>
