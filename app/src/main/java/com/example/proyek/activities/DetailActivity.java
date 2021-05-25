@@ -6,12 +6,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -37,9 +39,10 @@ public class DetailActivity extends AppCompatActivity {
     private TextView tvProductTitle, tvProductPrice, tvProductPlace, tvProductSold, tvProductFee, tvTotalOrder;
     private RatingBar rbProductReview;
     private TextInputEditText etInstructions;
-    private MaterialButton mBtnPlus, mBtnMinus, mBtnCreateOrder, mBtnDeleteOrder;
-    private String productID;
-    private int totalOrder, productPrice;
+    private MaterialButton mBtnPlus, mBtnMinus, mBtnCreateOrder, mBtnDeleteOrder, mBtnOrderTrue, mBtnOrderFalse;
+    private String dataID;
+    private int totalOrder, productPrice, classCode;
+    private Dialog dialogBox;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -52,7 +55,16 @@ public class DetailActivity extends AppCompatActivity {
         setSupportActionBar(tbDetail);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        productID = getIntent().getStringExtra("PRODUCT_ID");
+        classCode = getIntent().getIntExtra("CLASS_CODE", 0);
+        switch (classCode) {
+            case 101:
+                dataID = getIntent().getStringExtra("PRODUCT_ID");
+                reference = FirebaseDatabase.getInstance().getReference("Data").child(dataID);
+                break;
+            case 102:
+                dataID = getIntent().getStringExtra("PACKET_ID");
+                reference = FirebaseDatabase.getInstance().getReference("Packet").child(dataID);
+        }
 
         ivProductDetailBan = findViewById(R.id.ivProductDetailBanner);
         ivPosterImg = findViewById(R.id.ivPosterImg);
@@ -67,7 +79,6 @@ public class DetailActivity extends AppCompatActivity {
         mBtnCreateOrder = findViewById(R.id.btnCreateOrder);
         mBtnDeleteOrder = findViewById(R.id.btnDeleteOrder);
 
-        reference = FirebaseDatabase.getInstance().getReference("Data").child(productID);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -116,6 +127,43 @@ public class DetailActivity extends AppCompatActivity {
 
                     tvTotalOrder.setText("" + totalOrder);
                     mBtnCreateOrder.setText("Add to Cart - Rp. " + totalOrder * productPrice);
+                }
+            }
+        });
+
+
+        mBtnCreateOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (totalOrder > 0) {
+                    dialogBox = new Dialog(DetailActivity.this);
+                    dialogBox.setContentView(R.layout.dialog_box_confirm_order);
+                    dialogBox.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialogBox.setCancelable(true);
+                    dialogBox.getWindow().getAttributes().windowAnimations = R.style.DialogBoxAnimation;
+
+                    mBtnOrderTrue = dialogBox.findViewById(R.id.btnOrderTrue);
+                    mBtnOrderFalse = dialogBox.findViewById(R.id.btnOrderFalse);
+
+                    mBtnOrderFalse.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialogBox.dismiss();
+                        }
+                    });
+
+                    mBtnOrderTrue.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(DetailActivity.this, "We will process your order", Toast.LENGTH_LONG).show();
+                            dialogBox.dismiss();
+                        }
+                    });
+
+                    dialogBox.show();
+                } else {
+                    Toast.makeText(DetailActivity.this, "You haven't add anything", Toast.LENGTH_LONG).show();
                 }
             }
         });
