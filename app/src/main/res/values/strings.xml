@@ -22,8 +22,6 @@
     <string name="favorit">Favorit</string>
     <string name="notifikasi">Notifikasi</string>
     <string name="profile">Profile</string>
-    <string name="keranjang_kamu_masih_kosong">Keranjang Kamu Masih Kosong</string>
-    <string name="tunggu_apa_lagi">Tunggu Apa lagi, Buruan beli produk kesukaanmu dan kembali ke sini.</string>
     <string name="riwayat_pesanan_masih_kosong">Riwayat Pesanan Masih Kosong</string>
     <string name="produk_yang_telah">Produk yang telah anda pesan nantinya akan muncul di sini.</string>
     <string name="favorites_masih_kosong">Favorites Masih Kosong</string>
@@ -64,4 +62,10 @@
     <string name="misal_bayamnya_tidak_usah_ya">Misal : bayamnya tidak usah ya</string>
     <string name="add_to_favorite">add to favorite</string>
     <string name="hapus">Hapus</string>
+    <string name="keranjang_saya">Keranjang Saya</string>
+    <string name="keranjang_kamu_masih_kosong">Keranjang Kamu Masih Kosong</string>
+    <string name="tunggu_apa_lagi">Tunggu Apa lagi, Buruan beli produk kesukaanmu lalu bayar di sini.</string>
+    <string name="belanja_sekarang">Belanja Sekarang</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="detail_produk">Detail Produk</string>
 </resources>

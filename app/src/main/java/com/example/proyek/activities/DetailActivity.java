@@ -41,18 +41,18 @@ public class DetailActivity extends AppCompatActivity {
     private String productID;
     private int totalOrder, productPrice;
 
-
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        productID = getIntent().getStringExtra("PRODUCT_ID");
-
         tbDetail = findViewById(R.id.tbDetail);
+        tbDetail.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24);
         setSupportActionBar(tbDetail);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        productID = getIntent().getStringExtra("PRODUCT_ID");
 
         ivProductDetailBan = findViewById(R.id.ivProductDetailBanner);
         ivPosterImg = findViewById(R.id.ivPosterImg);
