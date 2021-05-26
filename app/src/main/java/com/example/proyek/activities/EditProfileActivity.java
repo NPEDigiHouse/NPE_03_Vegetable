@@ -15,8 +15,12 @@ import android.widget.Toast;
 
 import com.example.proyek.R;
 import com.example.proyek.models.user.UserModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +36,8 @@ import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileActivity extends AppCompatActivity {
+    // class ini untuk mengubah data dari profile
+
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -40,18 +46,20 @@ public class EditProfileActivity extends AppCompatActivity {
     private ImageView ivProfilePst;
     private MaterialButton mBtnChangeProfilePoster, mBtnChangeProfileImg;
     private CircleImageView civProfileImg;
-    private TextInputEditText etUsername, etEmail, etPhone;
+    private TextInputEditText etUsername, etEmail, etPhone, etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        // FirebaseAuth dan Database
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         userID = user.getUid();
         reference = FirebaseDatabase.getInstance().getReference("Login").child(mAuth.getUid());
 
+        // toolbar
         tbProfileEdit = findViewById(R.id.tbProfileEdit);
         tbProfileEdit.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24);
         setSupportActionBar(tbProfileEdit);
@@ -64,6 +72,7 @@ public class EditProfileActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsernameEdit);
         etEmail = findViewById(R.id.etEmailEdit);
         etPhone = findViewById(R.id.etPhoneEdit);
+        etPassword = findViewById(R.id.etPasswordEdit);
 
         // retrieve data from Firebase Database
         reference.addValueEventListener(new ValueEventListener() {
@@ -88,10 +97,17 @@ public class EditProfileActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
-        } else if (item.getItemId() == R.id.saveChanges) {
+        } else if (item.getItemId() == R.id.saveChanges) { // untuk menyimpan perubahan dari edit text ke FirebaseDatabase
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String username = etUsername.getText().toString();
             String email = etEmail.getText().toString();
             String phone = etPhone.getText().toString();
+            String password = etPassword.getText().toString();
+
+            if (password.length() < 6) {
+                etPassword.setError("Your password must be more than 6 characters");
+                etPassword.requestFocus();
+            }
 
             Map<String, Object> newDataMap = new HashMap<>();
             newDataMap.put("username", username);
@@ -104,6 +120,16 @@ public class EditProfileActivity extends AppCompatActivity {
                     Toast.makeText(EditProfileActivity.this, "Successfully edit profile", Toast.LENGTH_LONG).show();
                 }
             });
+
+            user.updatePassword(password).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(EditProfileActivity.this, "Failed", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+//            user.updateEmail(email);
         }
         return true;
     }

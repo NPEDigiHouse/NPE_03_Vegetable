@@ -176,7 +176,7 @@
                         android:fontFamily="@font/nunito_sans_bold"
                         android:textColor="@color/white"
                         android:textSize="12sp"
-                        tools:text="7.5" />
+                        android:text="7.5" />
 
                 </LinearLayout>
 
@@ -201,7 +201,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clDetailDesc"
-            tools:text="Central Fruit Makassar" />
+            android:text="Central Fruit Makassar" />
 
         <TextView
             android:id="@+id/tvProductTotalSoldOut"
@@ -217,7 +217,7 @@
             app:drawableTint="@color/primaryColor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvProductPlace"
-            tools:text="3rb telah terjual" />
+            android:text="3rb telah terjual" />
 
         <TextView
             android:id="@+id/tvProductOngkir"
@@ -233,7 +233,7 @@
             app:drawableTint="@color/primaryColor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvProductTotalSoldOut"
-            tools:text="Ongkos kirim Rp7.000" />
+            android:text="Ongkos kirim Rp7.000" />
 
         <View
             android:id="@+id/vDivider"

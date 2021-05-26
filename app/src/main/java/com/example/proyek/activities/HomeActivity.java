@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.proyek.R;
 import com.example.proyek.fragments.FragmentFav;
@@ -21,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +39,26 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         mAuth = FirebaseAuth.getInstance();
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = mAuth.getCurrentUser();
-                if (user != null) {
-                    Intent intent = new Intent(HomeActivity.this, GetStartedActivity.class);
-                    startActivity(intent);
-                }
-            }
-        };
+
+
     }
 
     @Override
     public void onStart() {
         super.onStart();
+
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    Intent intent = new Intent(HomeActivity.this, GetStartedActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
+
         mAuth.addAuthStateListener(mAuthStateListener);
     }
 

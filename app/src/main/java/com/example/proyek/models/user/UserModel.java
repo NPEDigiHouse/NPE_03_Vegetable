@@ -1,8 +1,10 @@
 package com.example.proyek.models.user;
 
 public class UserModel {
+    // Variabel
     public  String username, email, phoneNumber, as;
 
+    // Constructor
     public UserModel(String username, String email, String phoneNumber, String as){
         this.username = username;
         this.email = email;
@@ -13,6 +15,7 @@ public class UserModel {
     public UserModel() {
     }
 
+    // Setter dan Getter
     public String getUsername() {
         return username;
     }

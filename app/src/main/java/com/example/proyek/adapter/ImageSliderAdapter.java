@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.proyek.ImageSliderData;
+import com.example.proyek.models.ImageSliderData;
 import com.example.proyek.R;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImageSliderAdapter extends SliderViewAdapter<ImageSliderAdapter.SliderAdapterViewHolder> {
+
+
     private final List<ImageSliderData> imageSliderList;
 
     public ImageSliderAdapter(Context context, ArrayList<ImageSliderData> imageSliderList) {
@@ -35,6 +37,13 @@ public class ImageSliderAdapter extends SliderViewAdapter<ImageSliderAdapter.Sli
         ImageSliderData sliderItem = imageSliderList.get(position);
         ImageView ivAd = viewHolder.itemView.findViewById(R.id.ivAd);
         ivAd.setImageResource(sliderItem.getImg());
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(, "This is item in position " + position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

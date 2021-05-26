@@ -16,6 +16,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
+    /*  class ini berfungsi sebagai aktifitas jika user lupa password dan ingin mereset passwordnya
+     */
+
+    // Variabel
     private TextInputEditText etEmail;
     private Button btnResetPass;
     private FirebaseAuth mAuth;
@@ -25,15 +29,18 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
+        // Inisialisasi variabel
         mAuth = FirebaseAuth.getInstance();
 
         etEmail = findViewById(R.id.etEmail);
         btnResetPass = findViewById(R.id.btnResetPassword);
+        // Jika btn diclick
         btnResetPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = etEmail.getText().toString();
 
+                // pengecekan input
                 if (!isEmailValid(email)) {
                     etEmail.setError("Please input a valid email address !");
                     etEmail.requestFocus();
@@ -41,9 +48,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                     etEmail.setError("Please input your email address !");
                     etEmail.requestFocus();
                 } else {
+                    // FirebaseAuth akan mengirimkan email untuk mengubah password
                     mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+                            // cek jika email berhasil dikirim
                             if (task.isSuccessful()) {
                                 Toast.makeText(ForgotPasswordActivity.this, "A reset link has been sent to " + email, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(ForgotPasswordActivity.this, SignInActivity.class);
@@ -58,6 +67,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     }
 
+    // method untuk mengecek apakah email valid
     boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
