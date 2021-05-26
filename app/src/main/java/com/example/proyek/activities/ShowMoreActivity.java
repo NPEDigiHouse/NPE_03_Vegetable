@@ -55,14 +55,18 @@ public class ShowMoreActivity extends AppCompatActivity {
 
         reference = FirebaseDatabase.getInstance().getReference();
 
+        //cek untuk bagian showMore mana yang di klik
+        //dengan memberikan id masing"
         ID = getIntent().getIntExtra("ID", 0);
         switch (ID) {
+                //id 301 untuk product
             case 301:
                 tvTitle.setText(getIntent().getStringExtra("TITLE"));
                 rvProduct = findViewById(R.id.rvShowMore);
                 rvProduct.setHasFixedSize(true);
                 showProductRV();
                 break;
+                //id 302 untuk packet
             case 302:
                 tvTitle.setText(getIntent().getStringExtra("TITLE"));
                 rvPacket = findViewById(R.id.rvShowMore);
@@ -74,16 +78,22 @@ public class ShowMoreActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
+    //method untuk menampilkan recyclerview product
     private void showProductRV() {
+        //memanggil layoutmanager
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        //memberikan layoutmanager pada recyclerview
         rvProduct.setLayoutManager(layoutManager);
         rvProduct.setItemAnimator(new DefaultItemAnimator());
 
+        //memanggil firebaserecylceroption untuk terima data dari packet modal
         FirebaseRecyclerOptions<PacketModel> options = new FirebaseRecyclerOptions.Builder<PacketModel>()
                 .setQuery(reference.child("Data"), PacketModel.class).build();
 
+        //mengisi adapter dengan options dan data
         adapter = new ShowMoreAdapter(options, "Data");
 
+        //memberikan adapter untuk recyclerview
         rvProduct.setAdapter(adapter);
     }
 
