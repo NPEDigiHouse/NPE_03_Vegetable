@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity {
 
+    //deklarasi variabel
     Button btnLogout, btnInput;
     private FirebaseAuth mAuth;
     RecyclerAdapter recyclerAdapter;
@@ -36,31 +37,42 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
+        //inisialisasi variabel
         recyclerView = findViewById(R.id.rvSayurAdmin);
+        //memberikan layout manager ke recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        //memanggil FirebaseRecyclerOptions untuk menampilkan data
         FirebaseRecyclerOptions<ProductModel> options = new FirebaseRecyclerOptions.Builder<ProductModel>().setQuery(FirebaseDatabase.getInstance().getReference().child("Data") , ProductModel.class).build();
         recyclerAdapter = new RecyclerAdapter(options);
         recyclerView.setAdapter(recyclerAdapter);
 
+        /inisialisasi mAuth
         mAuth = FirebaseAuth.getInstance();
-
+        
+        
+        //inisialisasi btnLogout
         btnLogout = findViewById(R.id.btnLogout);
+        //dimana jika di klik
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //maka akan signout dan ke SignInActivity
                 mAuth.signOut();
                 startActivity(new Intent(AdminActivity.this, SignInActivity.class));
                 finish();
             }
         });
 
+        //inisialisasi btnInput
         btnInput = findViewById(R.id.btnInput);
+        //dimana jika di klik
         btnInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //maka DialogFragment akan di panggil, dan tampil
                 DialogFragment dialogFragment = new DialogForm();
                 dialogFragment.show(getSupportFragmentManager(), "form");
             }
@@ -68,24 +80,12 @@ public class AdminActivity extends AppCompatActivity {
 
     }
 
+    //onStart agar reccyclerview nya muncul saat app dijalankan
     @Override
     protected void onStart() {
         super.onStart();
         recyclerAdapter.startListening();
     }
 
-    //    private void showData(){
-//        databaseReference.child("Data").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
+
 }

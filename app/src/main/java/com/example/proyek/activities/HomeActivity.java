@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class HomeActivity extends AppCompatActivity {
+    //deklarasi firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private FirebaseUser user;
@@ -28,10 +29,12 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        
+        //memanggil bottomnavigationview
         BottomNavigationView bottomNavigationItemView = findViewById(R.id.bottom_navigation);
         bottomNavigationItemView.setOnNavigationItemSelectedListener(navListener);
 
+        //mengatur agar fragment yang tampil awal adalah FragmentHome
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new FragmentHome())
@@ -43,6 +46,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    // mengatur untuk saat app dibuka dan user login agar ke activity GetStartedActivity terlebih dahulu
     @Override
     public void onStart() {
         super.onStart();
@@ -50,8 +54,10 @@ public class HomeActivity extends AppCompatActivity {
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                //mengambil user yang login
                 user = firebaseAuth.getCurrentUser();
                 if (user == null) {
+                    //mengarahkan ke activity GetStartedActivity
                     Intent intent = new Intent(HomeActivity.this, GetStartedActivity.class);
                     startActivity(intent);
                     finish();
@@ -62,10 +68,13 @@ public class HomeActivity extends AppCompatActivity {
         mAuth.addAuthStateListener(mAuthStateListener);
     }
 
+    //mengatur untuk bagian BottomNavigationView
     @SuppressLint("NonConstantResourceId")
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener = item -> {
         Fragment selectedFragment = null;
-
+        
+        //kondisi untuk cek item/icon bottomnav mana yang di klik
+        //jika di klik salah satunya, maka akan mengampilkan fragment yang seusai
         switch (item.getItemId()) {
             case R.id.nav_profile:
                 selectedFragment = new FragmentProfile();

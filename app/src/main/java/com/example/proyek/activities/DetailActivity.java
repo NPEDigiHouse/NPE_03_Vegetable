@@ -34,6 +34,7 @@ import java.util.Objects;
 public class DetailActivity extends AppCompatActivity {
     // class ini untuk menampilkan detail dari produk yang di klik dari recyclerview
 
+    //deklarasi variabel
     private DatabaseReference reference;
     private Toolbar tbDetail;
     private ImageView ivDetailBan, ivPosterImg;
@@ -68,6 +69,7 @@ public class DetailActivity extends AppCompatActivity {
                         ProductModel productModel = snapshot.getValue(ProductModel.class);
                         price = Integer.parseInt(productModel.getPrice());
 
+                        //untuk menampilkan gambar dengan menggunakan Glide, agar datanya tidak terlalu besar
                         Glide.with(DetailActivity.this).load(productModel.getUrl()).into(ivDetailBan);
                         Glide.with(DetailActivity.this).load(productModel.getUrl()).into(ivPosterImg);
                         tvTitle.setText(productModel.getName());
@@ -134,6 +136,7 @@ public class DetailActivity extends AppCompatActivity {
                 break;
         }
 
+        //inisialisasi variabel
         ivDetailBan = findViewById(R.id.ivProductDetailBanner);
         ivPosterImg = findViewById(R.id.ivPosterImg);
         tvTitle = findViewById(R.id.tvProductTitle);

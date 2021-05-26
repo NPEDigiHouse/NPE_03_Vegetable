@@ -1,17 +1,22 @@
 package com.example.proyek.models.packet;
 
 public class PacketModel {
+    
+    //deklarasi variabel private
     private String name, price, url;
 
+    //membuat constructor kosong
     public PacketModel() {
     }
 
+    //membuat constructor
     public PacketModel(String name, String price, String url) {
         this.name = name;
         this.price = price;
         this.url = url;
     }
 
+    //membuat setter dan getter untuk variabel
     public String getName() {
         return name;
     }

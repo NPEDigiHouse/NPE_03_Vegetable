@@ -18,12 +18,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        //kondisi untuk cek jika sdk yang digunakan lebih besar atau sama dengan kitkat
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
             window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                     WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         }
 
+        //untuk menampilkan spalshscreen dan mengarahkan ke HomeActivity dengan delay pending transisi 2000 ms, 2 detik
         new Handler().postDelayed(() -> {
             Intent mainActivity = new Intent(SplashScreenActivity.this, HomeActivity.class);
             startActivity(mainActivity);

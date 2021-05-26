@@ -19,13 +19,14 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+//di atas adalah import dari semua yang dibutuhkan pada activity ini
 
 public class SignUpActivity extends AppCompatActivity {
     /* class ini berfungsi untuk aktifitas menambah akun (Register/SignUp)
     *
     * */
 
-    // variabel
+    // deklarasi variabel
     private FirebaseAuth mAuth;
     private TextInputEditText etUsername, etEmail, etPassword, etPhone;
     private Button btnSignUp;
@@ -45,10 +46,12 @@ public class SignUpActivity extends AppCompatActivity {
         etPhone = findViewById(R.id.etPhone);
         btnSignUp = findViewById(R.id.btnSignUp);
         tvSignIn = findViewById(R.id.tvSignUp);
-
+        
+        // mengkondisikan agar btnSignUp dapat di klik
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
                 // mengambil data String dari edit text
                 String username = etUsername.getText().toString();
                 String email = etEmail.getText().toString();
@@ -91,6 +94,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 FirebaseDatabase.getInstance().getReference("Login").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
+                                        // jika task berhasil, maka muncul toast 
                                         if (task.isSuccessful()) {
                                             Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                                             Toast.makeText(SignUpActivity.this, "Sign up complete, please sign in", Toast.LENGTH_SHORT).show();

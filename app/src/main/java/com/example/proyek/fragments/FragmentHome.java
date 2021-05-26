@@ -31,7 +31,7 @@ import com.smarteist.autoimageslider.SliderView;
 import java.util.ArrayList;
 
 public class FragmentHome extends Fragment {
-    // variabel
+    //deklarasi variabel
     private View view;
     private DatabaseReference reference;
     private RecyclerView rvProduct, rvPacket;
@@ -57,6 +57,7 @@ public class FragmentHome extends Fragment {
         tvShowMoreProduct = view.findViewById(R.id.tvnewProductShowMore);
         tvShowMorePacket = view.findViewById(R.id.tvPacketShowMore);
 
+        //jika tvShowMore di klik
         tvShowMoreProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
