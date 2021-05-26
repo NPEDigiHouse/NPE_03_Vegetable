@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.CartActivity">
+    tools:context=".activities.OrderDetailsActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbCart"
+        android:id="@+id/tbOrderDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -25,21 +25,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/keranjang_saya" />
+            android:text="@string/detail_pesanan" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Saat keranjang tidak kosong -->
-    <!-- Ganti visibility menjadi 'visible' saat keranjang tidak kosong -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clCartContainer"
+        android:id="@+id/clOrderDetailsContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/cvBtnOrderContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tbCart">
+        app:layout_constraintTop_toBottomOf="@id/tbOrderDetails">
 
         <FrameLayout
             android:id="@+id/flTextDeliverTo"
@@ -90,20 +87,9 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/vChevronRight"
                 app:layout_constraintStart_toEndOf="@id/vFmdGood"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Masukkan alamat anda" />
-
-            <ImageView
-                android:id="@+id/vChevronRight"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_baseline_chevron_right_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
+                tools:text="Jl. Panser No.46, Hasanuddin, Mandai, Maros" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -125,15 +111,6 @@
                 android:text="@string/rincian_pesanan"
                 android:textColor="@color/primaryGrey"
                 android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|center_vertical"
-                android:layout_margin="16dp"
-                android:fontFamily="@font/nunito_sans"
-                android:text="@string/tambah_pesanan"
-                android:textColor="@color/blue" />
 
         </FrameLayout>
 
@@ -197,19 +174,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvProductOrderTitle" />
 
             <TextView
-                android:id="@+id/tvEditOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/nunito_sans_bold"
-                android:text="@string/edit"
-                android:textColor="@color/blue"
-                app:layout_constraintStart_toEndOf="@+id/cvProductImg"
-                app:layout_constraintTop_toBottomOf="@+id/tvInstructionsOrder" />
-
-            <TextView
                 android:id="@+id/tvOrderCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -241,7 +205,6 @@
             android:id="@+id/line1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="8dp"
             android:background="@color/lineColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -366,18 +329,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Saat keranjang tidak kosong -->
-    <!-- Ganti visibility menjadi 'visible' saat keranjang tidak kosong -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cvBtnOrderContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         app:cardElevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/clCartContainer">
+        app:layout_constraintTop_toBottomOf="@id/clOrderDetailsContainer">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/flTotalPriceDetail"
@@ -408,14 +368,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCreateOrder"
+                android:id="@+id/btnBack"
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_sans_bold"
                 android:padding="12dp"
-                android:text="@string/pesan"
+                android:text="@string/kembali"
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@+id/tvTotalPriceText" />
@@ -423,75 +383,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
-    <!-- Saat keranjang kosong -->
-    <!-- Ganti visibility menjadi 'gone' saat keranjang tidak kosong -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clEmptyCart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbCart">
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="197dp"
-            android:layout_height="150dp"
-            android:src="@drawable/ic_undraw_empty_cart_co35"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/nunito_sans_bold"
-            android:gravity="center_horizontal"
-            android:text="@string/keranjang_kamu_masih_kosong"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/nunito_sans"
-            android:gravity="center_horizontal"
-            android:text="@string/tunggu_apa_lagi"
-            android:textAlignment="center"
-            android:textColor="@color/secondaryGrey"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnShopingNow"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:fontFamily="@font/nunito_sans_bold"
-            android:padding="12dp"
-            android:text="@string/belanja_sekarang"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:backgroundTint="@color/secondaryColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView3" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
