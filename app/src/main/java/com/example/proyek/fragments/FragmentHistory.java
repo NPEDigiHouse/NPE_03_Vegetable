@@ -21,6 +21,7 @@ public class FragmentHistory extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //mengkondisikan aga FragmentHistory mengimplementasikan layout fragment_history
         View view = inflater.inflate(R.layout.fragment_history, container, false);
 
         return view;
