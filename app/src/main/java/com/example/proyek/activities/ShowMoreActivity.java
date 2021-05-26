@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ShowMoreActivity extends AppCompatActivity {
+    
+    //deklarasi variabel
     private Toolbar tbShowMore;
     private DatabaseReference reference;
     private RecyclerView rvProduct, rvPacket;
@@ -44,6 +46,7 @@ public class ShowMoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_more);
 
+        //inisialisasi variabel
         tvTitle = findViewById(R.id.tvShowMoreTitle);
         tbShowMore = findViewById(R.id.tbShowMore);
         tbShowMore.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24_primary);
@@ -84,16 +87,21 @@ public class ShowMoreActivity extends AppCompatActivity {
         rvProduct.setAdapter(adapter);
     }
 
+    //untuk menampilkan recyclerview packet
     private void showPacketRV() {
+        //inisialisai variabel
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvPacket.setLayoutManager(layoutManager);
         rvPacket.setItemAnimator(new DefaultItemAnimator());
 
+        //memanggil firebaserecycleroptions untuk PacketModal
         FirebaseRecyclerOptions<PacketModel> options = new FirebaseRecyclerOptions.Builder<PacketModel>()
                 .setQuery(reference.child("Packet"), PacketModel.class).build();
 
+        //mengisi adapter dengan options, dan packet
         adapter = new ShowMoreAdapter(options, "Packet");
 
+        //memberikan adapter pada recyclervieew
         rvPacket.setAdapter(adapter);
     }
 
@@ -103,6 +111,7 @@ public class ShowMoreActivity extends AppCompatActivity {
         return true;
     }
 
+    //agar adapter bekerja saat start
     @Override
     public void onStart() {
         super.onStart();
