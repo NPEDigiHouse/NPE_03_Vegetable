@@ -79,6 +79,7 @@ public class FragmentProfile extends Fragment {
                     mBtnSignOutFalse = dialogBox.findViewById(R.id.btnSignOutFalse);
                     mBtnSignOutTrue = dialogBox.findViewById(R.id.btnSignOutTrue);
 
+                    //kondisi untuk menghilangkan dialogbox
                     mBtnSignOutFalse.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -86,6 +87,7 @@ public class FragmentProfile extends Fragment {
                         }
                     });
 
+                    //kondisi untuk signOut dan menghilangkan dialogbox
                     mBtnSignOutTrue.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -102,6 +104,7 @@ public class FragmentProfile extends Fragment {
             }
         });
 
+        //inisialisasi variabel
         civProfileImg = view.findViewById(R.id.civImageProfile);
         tvName = view.findViewById(R.id.tvName);
         tvEmail = view.findViewById(R.id.tvEmail);
