@@ -53,6 +53,8 @@
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbFavorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:itemCount="3"
         tools:listitem="@layout/item_list_favorite" />
 
     <!-- Saat favorite kosong -->
@@ -61,6 +63,7 @@
         android:id="@+id/clEmptyFavorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

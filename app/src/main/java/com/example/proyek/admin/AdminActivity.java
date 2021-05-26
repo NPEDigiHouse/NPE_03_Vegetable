@@ -45,11 +45,12 @@ public class AdminActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         //memanggil FirebaseRecyclerOptions untuk menampilkan data
-        FirebaseRecyclerOptions<ProductModel> options = new FirebaseRecyclerOptions.Builder<ProductModel>().setQuery(FirebaseDatabase.getInstance().getReference().child("Data") , ProductModel.class).build();
+        FirebaseRecyclerOptions<ProductModel> options = new FirebaseRecyclerOptions.Builder<ProductModel>()
+                .setQuery(FirebaseDatabase.getInstance().getReference().child("Data") , ProductModel.class).build();
         recyclerAdapter = new RecyclerAdapter(options);
         recyclerView.setAdapter(recyclerAdapter);
 
-        /inisialisasi mAuth
+        //inisialisasi mAuth
         mAuth = FirebaseAuth.getInstance();
         
         

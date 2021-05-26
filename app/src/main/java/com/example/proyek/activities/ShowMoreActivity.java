@@ -37,7 +37,6 @@ public class ShowMoreActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private RecyclerView rvProduct, rvPacket;
     private ShowMoreAdapter adapter;
-    private RvAdapterUser rvAdapterUser;
     private TextView tvTitle;
     private int ID;
 

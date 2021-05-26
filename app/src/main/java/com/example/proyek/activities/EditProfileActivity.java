@@ -125,7 +125,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (!task.isSuccessful()) {
-                        Toast.makeText(EditProfileActivity.this, "Failed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EditProfileActivity.this, "Failed, try login again", Toast.LENGTH_LONG).show();
                     }
                 }
             });
