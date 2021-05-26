@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 public class RvItemSetGet implements Parcelable {
 
+    //bagian ini sama dengan bagian modal, akan tetapi menggunakan parcelable karena menggunakan data static dan agar lebih efisien
+    //deklarasi variabel
     private int photo;
     private String name;
 
