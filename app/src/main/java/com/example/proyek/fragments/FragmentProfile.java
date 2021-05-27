@@ -97,8 +97,6 @@ public class FragmentProfile extends Fragment {
                     });
 
                     dialogBox.show();
-
-                    Toast.makeText(getActivity(), "You choose SignOut", Toast.LENGTH_LONG).show();
                 }
                 return true;
             }

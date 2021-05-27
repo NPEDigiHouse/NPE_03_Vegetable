@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyek.activities.CartActivity;
 import com.example.proyek.models.ImageSliderData;
 import com.example.proyek.R;
 import com.example.proyek.activities.ShowMoreActivity;
@@ -24,6 +25,7 @@ import com.example.proyek.adapter.ProductAdapter;
 import com.example.proyek.models.packet.PacketModel;
 import com.example.proyek.models.product.ProductModel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.smarteist.autoimageslider.SliderView;
@@ -38,6 +40,7 @@ public class FragmentHome extends Fragment {
     private ProductAdapter productAdapter;
     private PacketAdapter packetAdapter;
     private TextView tvShowMoreProduct, tvShowMorePacket;
+    private FloatingActionButton fabCart;
 
     @Nullable
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -98,6 +101,15 @@ public class FragmentHome extends Fragment {
         sliderView.setScrollTimeInSec(7);
         sliderView.setAutoCycle(true);
         sliderView.startAutoCycle();
+
+        fabCart = view.findViewById(R.id.fabCart);
+        fabCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CartActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
